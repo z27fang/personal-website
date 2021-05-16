@@ -1,0 +1,19 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+p {
+  @apply text-gray-500 mb-4 text-sm;
+}
+
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+/* Write you own custom component styles here */
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */

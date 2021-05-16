@@ -1,3 +1,5 @@
+import ImageNavigator from "../components/imageNavigator/image-navigator";
+
 function Home() {
 
     const menuLinks = [
@@ -10,7 +12,10 @@ function Home() {
 
     return  (
         <main>
-
+            <div className="w-full h-full">
+                <ImageNavigator
+                images={['/bg1.jpg', '/bg2.jpg', 'bg3.jpg']}/>
+            </div>
         </main>
     )
 }
