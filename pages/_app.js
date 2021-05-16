@@ -1,4 +1,4 @@
-// import store from '../'
+import "../styles/index.css";
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import store from "../lib/redux/store";
