@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 function MenuLink(props) {
     return (
-    <div className="px-8 text-gray-500 cursor-pointer">
-        <p className="py-2 md:py-0 text-lg border-opacity-0 border-gray-500 border-b-4 hover:border-opacity-100 transition ease-linear duration-300">{ props.children }</p>
+    <div className="px-8 cursor-pointer">
+        <p className="py-2 text-white md:py-0 text-lg border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300">{ props.children }</p>
     </div>)
 }
 
@@ -16,7 +16,7 @@ export default function Header({ menuLinks }){
     return (
         <header className="py-10 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border">
             <div className="max-w-6xl flex items-center mx-auto box-border justify-between">
-                <div className="cursor-pointer box-border h-5 pl-4 text-gray-500 text-lg z-10">Home</div>
+                <div className="cursor-pointer box-border h-5 pl-4 text-white text-lg z-10">Home</div>
                 <div className="hidden md:flex">
                     <div className="opacity-100 z-10 shadow-none flex flex-row p-0 static items-center inset-x-0 top-0 box-border ">
                         {menuLinks.map((menulink, index) => (
@@ -32,7 +32,7 @@ export default function Header({ menuLinks }){
                 onClick={() => setShowMenu((prev) => !prev)}
                 >
                     <svg
-                        className="w-6 text-gray-900"
+                        className="w-6 text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
