@@ -31,7 +31,7 @@ function Home() {
                 </div>
                 {
                     showSearch &&
-                    <div className="text-black md:text-4xl text-xl md:w-96 w-1/2 md:h-16 h-6">
+                    <div className="text-black md:text-3xl text-xl md:w-96 w-1/2 md:h-14 h-6">
                         <SearchBox/>
                     </div>
                 }
