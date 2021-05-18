@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 
 function SearchBtn(props){
     console.log(props)
-    return(
-        <svg className={props.className} xmlns="http://www.w3.org/2000/svg"><g stroke-width="2" stroke="#6c6c6c" fill="none"><path d="M11.29 11.71l-4-4"/><circle cx="5" cy="5" r="4"/></g></svg>
+    return (
+        <svg className={props.className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/1999/xlink" stoke="currentColor">
+            <path strokeWidth={2} d="m495,466.1l-119.2-119.2c29.1-35.5 46.5-80.8 46.5-130.3 0-113.5-92.1-205.6-205.6-205.6-113.6,0-205.7,92.1-205.7,205.7s92.1,205.7 205.7,205.7c49.4,0 94.8-17.4 130.3-46.5l119.1,119.1c8,8 20.9,8 28.9,0 8-8 8-20.9 0-28.9zm-443.2-249.4c-1.42109e-14-91 73.8-164.8 164.8-164.8 91,0 164.8,73.8 164.8,164.8s-73.8,164.8-164.8,164.8c-91,0-164.8-73.8-164.8-164.8z"/>
+        </svg>
     )
 }
 
@@ -11,14 +13,13 @@ export default function SearchBox() {
     const [inputText, setInputText] = useState('')
 
     return (
-        <div className="flex flex-row h-full">
-            <input className="w-11/12"
+        <div className="flex justify-between h-full w-full">
+            <input 
+            className="w-full"
+            style={{"backgroundColor": "rgba(255,255,255,0.5)"}}
             type="text" value={inputText} 
             onChange={(e) => setInputText(e.target.value)} />
-            <div className="w-1/12">
-                <SearchBtn className="w-full text-white"/>
-            </div>
-
+            <SearchBtn className="items-end md:text-4xl text-xl text-black bg-white bg-opacity-50 p-2"/>
         </div>
     )
 }
