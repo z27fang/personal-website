@@ -1,0 +1,15 @@
+.draggable-list {
+    background-color: rgba(0,0,0,0);
+    resize: both;
+    overflow: scroll;
+    /* background-color:rgb(212, 67, 67);
+    height: 8rem;
+    min-width: 8rem; */
+}
+.draggable-items-container {
+    display: flex;
+    flex-direction: column;
+    position: 'absolute'
+    /* resize: both;
+    overflow: scroll; */
+}

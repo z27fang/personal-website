@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ImageNavigator from "../components/imageNavigator/image-navigator";
 import SearchBox from "../components/searchBox/search-box";
+import DraggableDropdown from "../components/draggable-dropdown/draggable-dropdown";
 import Header from "../components/header";
 
 function Home() {
@@ -31,11 +32,18 @@ function Home() {
                 </div>
                 {
                     showSearch &&
-                    <div className="text-black md:text-3xl text-xl md:w-96 w-1/2 md:h-14 h-6">
+                    <div className="md:text-3xl text-xl md:w-96 w-1/2 md:h-14 h-6">
                         <SearchBox/>
                     </div>
                 }
             </div>
+            <DraggableDropdown 
+            className="fixed top-1/2 z-20 bg-white"
+            itemWidth="8rem"
+            itemHeight="2rem"
+            headerBG="rgba(255,255,255,0.7)"
+            itemBG="rgba(255,255,255,0.5)"
+            contents={['abc', 'def', 'ghi', 'jkl', 'uio', 'asdfa asdf']}/>
         </main>
     )
 }
