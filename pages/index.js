@@ -20,21 +20,21 @@ function Home() {
                 <ImageNavigator
                 images={['/bg1.jpg', '/bg2.jpg', 'bg3.jpg']}/>
             </div>
-            <div className="fixed top-1/2 w-full">
-                <div className="flex flex-col justify-center items-center md:text-5xl text-xl text-white font-serif" 
+            <div className="fixed top-1/2 w-full flex flex-col justify-center items-center text-center">
+                <div className="md:text-5xl text-xl text-white font-serif w-full" 
                 onMouseOver={() => setShowSearch(true)}>
                     <div className={ "transition duration-500 linear delay-0 transform "+ 
                     (showSearch ?
                          "-translate-y-full" :
                          "translate-y-0"
                     )}>Developer & Photographer</div>
-                    {
-                        showSearch &&
-                        <div className="text-black">
-                            <SearchBox/>
-                        </div>
-                    }
                 </div>
+                {
+                    showSearch &&
+                    <div className="text-black w-1/3 md:h-16 h-xl">
+                        <SearchBox/>
+                    </div>
+                }
             </div>
         </main>
     )
