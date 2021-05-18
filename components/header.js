@@ -4,7 +4,7 @@ import Image from 'next/image';
 function MenuLink(props) {
     return (
     <div className="px-8 cursor-pointer">
-        <p className="py-2 text-white md:py-0 text-lg border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300">{ props.children }</p>
+        <p className="py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300">{ props.children }</p>
     </div>)
 }
 
@@ -15,8 +15,9 @@ export default function Header({ menuLinks }){
 
     return (
         <header className="py-10 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border">
-            <div className="max-w-6xl flex items-center mx-auto box-border justify-between">
-                <div className="cursor-pointer box-border h-5 pl-4 text-white text-lg z-10">Home</div>
+            <div className="max-w-7xl flex items-center mx-auto box-border justify-between">
+                {/* <div className="cursor-pointer box-border h-5 text-white text-lg z-10 p-0 top-0">Home</div> */}
+                <MenuLink>Home</MenuLink>
                 <div className="hidden md:flex">
                     <div className="opacity-100 z-10 shadow-none flex flex-row p-0 static items-center inset-x-0 top-0 box-border ">
                         {menuLinks.map((menulink, index) => (
