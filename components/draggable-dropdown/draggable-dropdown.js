@@ -27,6 +27,10 @@ export default function DraggableDropdown(props) {
             'transform': `translate(${d.x}px, ${d.y}px)`
         })
     }
+
+    const onResizeHandler = (e, d) => {
+
+    }
     
     const myRef = useRef(null);
     return (
@@ -40,24 +44,33 @@ export default function DraggableDropdown(props) {
                 }}></div>
             </Draggable>
             {/** the rest item are the list content */}
-            <div className={props.className + ' ' + type['draggable-items-container']}
+            <div className={props.className}
             style={{
                 "marginTop": props.itemHeight,
                 ...transformCSS,
             }}>
-            {
-                items.map((item) => (
-                    <div 
-                    key={item} 
-                    className={type['draggable-list-item']} 
-                    style={{
-                        'backgroundColor': props.itemBG || 'black',
-                        ...itemStyle
-                    }}>
-                        {item}
-                    </div>
-                ))
-            }
+                <div className={type['draggable-items-container']}>
+                    {
+                        items.map((item) => (
+                            <div 
+                            key={item} 
+                            className={type['draggable-list-item']} 
+                            style={{
+                                'backgroundColor': props.itemBG || 'black',
+                                ...itemStyle
+                            }}>
+                                {item}
+                            </div>
+                        ))
+                    }
+
+                    <Draggable className={type['resize-button']}
+                    onDrag={onResizeHandler}>
+                        <span className={type['resize-button']}/>
+                    </Draggable>
+                </div>
+
+
             </div>
         </>
             // <div className={props.className + ' ' + type['draggable-list']}

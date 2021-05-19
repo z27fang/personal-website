@@ -39,7 +39,7 @@ function Home() {
                 }
             </div>
             <DraggableDropdown 
-            className="fixed top-1/2 z-20"
+            className="fixed top-1/3 z-20"
             itemWidth="8rem"
             itemHeight="2rem"
             headerBG="rgba(255,255,255,0.7)"
