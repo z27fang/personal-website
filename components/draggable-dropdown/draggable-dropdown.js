@@ -63,32 +63,16 @@ export default function DraggableDropdown(props) {
                             </div>
                         ))
                     }
-
-                    <Draggable className={type['resize-button']}
-                    onDrag={onResizeHandler}>
-                        <span className={type['resize-button']}/>
-                    </Draggable>
                 </div>
 
-
+                {/* <Draggable
+                onDrag={onResizeHandler}>
+                    <span className={type['resize-button']}/>
+                </Draggable> */}
             </div>
+
+
         </>
-            // <div className={props.className + ' ' + type['draggable-list']}
-            // style={{
-            //     width: props.itemWidth,
-            //     minWidth: props.itemWidth,
-            //     minHeight: props.itemHeight,
-            //     backgroundColor: props.itemBG || 'black',
-            //     ...containerStyle
-            // }}>
-
-            //     {/** list */}
-            //     {/** the first item is the header */}
-
-
-
-
-            // </div>
     )
 
 }

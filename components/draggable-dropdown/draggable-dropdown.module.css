@@ -19,14 +19,17 @@
     overflow: scroll; */
 }
 
-.resize-button {
+.resize-button-container {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 20px;
-    height: 20px;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
+}
+
+.resize-button {
+    width: 15px;
+    height: 15px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
     border-color: gray;
     margin-right:2px;
     margin-bottom:2px;
