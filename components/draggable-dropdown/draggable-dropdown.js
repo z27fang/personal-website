@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import type from "./draggable-dropdown.module.css";
 import Draggable from "react-draggable";
-import DraggableContainer from "./draggable-container";
-import ReactDOM from 'react-dom';
 
 export default function DraggableDropdown(props) {
 
