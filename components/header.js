@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 function MenuLink(props) {
     return (
     <div className="px-8 cursor-pointer">
-        <p className="py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300">{ props.children }</p>
+        <Link 
+        href={props.href || ""}>
+            <p className="py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300">
+                { props.children }
+            </p>
+        </Link>
     </div>)
 }
 
