@@ -11,7 +11,7 @@ export default function Blog({ allPosts }){
     console.log(allPosts);
     return (
         <div>
-            <Image src="/bg1.jpg"
+            <Image src="/bg3.jpg"
             layout="fill"
             objectFit="cover"/>
             <Header menuLinks={menuLinks} selectedTab="/blog/"/>

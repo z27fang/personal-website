@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import ImageNavigator from "../components/imageNavigator/image-navigator";
+import Image from 'next/image';
 import SearchBox from "../components/searchBox/search-box";
 import DraggableDropdown from "../components/draggable-dropdown/draggable-dropdown";
-import Draggable from 'react-draggable';
 import Header from "../components/header";
 
 function Home() {
@@ -18,10 +17,7 @@ function Home() {
     return  (
         <main>
             <Header menuLinks={menuLinks} selectedTab={null}/>
-            <div className="w-full h-full">
-                <ImageNavigator
-                images={['/bg1.jpg', '/bg2.jpg', 'bg3.jpg']}/>
-            </div>
+            <Image src="/bg1.jpg" layout="fill" objectFit="cover"/>
             <div className="fixed top-1/2 w-full flex flex-col justify-center items-center text-center">
                 <div className="md:text-5xl text-xl text-white font-serif w-full" 
                 onMouseOver={() => setShowSearch(true)}>
