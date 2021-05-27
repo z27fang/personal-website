@@ -17,7 +17,7 @@ function Home() {
 
     return  (
         <main>
-            <Header menuLinks={menuLinks}/>
+            <Header menuLinks={menuLinks} selectedTab={null}/>
             <div className="w-full h-full">
                 <ImageNavigator
                 images={['/bg1.jpg', '/bg2.jpg', 'bg3.jpg']}/>

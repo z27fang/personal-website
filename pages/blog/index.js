@@ -1,9 +1,21 @@
 import { getAllBlogs } from '../../lib/api';
+import Header from '../../components/header';
+import Image from 'next/image';
 
 export default function Blog({ allPosts }){
+    const menuLinks = [
+        { href: "/blog/", name: "Blog" },
+        { href: "/gallary/", name: "Gallary" },
+        { href: "/about/", name: "About"}
+      ];
     console.log(allPosts);
     return (
-        <div></div>
+        <div>
+            <Image src="/bg1.jpg"
+            layout="fill"
+            objectFit="cover"/>
+            <Header menuLinks={menuLinks} selectedTab="/blog/"/>
+        </div>
     )
 }
 
