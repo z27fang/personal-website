@@ -1,10 +1,5 @@
 @tailwind base;
 
-/* Write your own custom base styles here */
-p {
-  @apply text-gray-500 mb-4 text-sm;
-}
-
 ::-webkit-scrollbar {
   width: 20px;
 }
