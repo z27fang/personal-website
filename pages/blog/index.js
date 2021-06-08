@@ -3,7 +3,7 @@ import Header from '../../components/header';
 import Image from 'next/image';
 import Section from '../../components/blog/section';
 import BlogEntry from '../../components/blog/blog-entry';
-
+import BlogContainer from '../../components/blog/blog-container';
 export default function Blog({ allPosts }){
     const menuLinks = [
         { href: "/blog/", name: "Blog" },
@@ -20,8 +20,8 @@ export default function Blog({ allPosts }){
             layout="fill"
             objectFit="cover"/>
             <Header menuLinks={menuLinks} selectedTab="/blog/"/>
-            <div className="fixed left-0 top-28 right-0 overflow-y-scroll max-h-full">
-                <div className="max-w-7xl flex flex-col mx-auto">
+            <div className="fixed left-0 top-28 right-0 overflow-y-scroll max-h-full mb-24 mt-20">
+                {/* <div className="max-w-7xl flex flex-col mx-auto">
                     <Section section="react"/>                   
                     <div className="flex md:flex-row flex-col px-8">
                         {
@@ -29,11 +29,9 @@ export default function Blog({ allPosts }){
                         } 
                     </div>
 
-                </div>
+                </div> */}
+                <BlogContainer section='React' blogs={reactBlogs}/>
             </div>
-
-
-
         </div>
     )
 }

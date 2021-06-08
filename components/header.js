@@ -61,14 +61,16 @@ export default function Header({ menuLinks, selectedTab }){
             <div className="flex md:hidden">
                 <div
                 className={
-                    "fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-30 bg-gray-100 transition duration-500 linear delay-0 transform " +
+                    "fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-80 bg-gray-700 transition duration-500 linear delay-0 transform " +
                     (showMenu
                     ? "translate-y-0 shadow-2xl opacity-1"
                     : "-translate-y-full opacity-0")
                 }
                 >
                 {menuLinks.map((menulink,id) => (
-                    <MenuLink key={id} href={menulink.href} selectedTab={selectedTab}>{menulink.name}</MenuLink>
+                    <MenuLink key={id} href={menulink.href} selectedTab={selectedTab}>
+                        {menulink.name}
+                    </MenuLink>
                 ))}
                 </div>
             </div>
