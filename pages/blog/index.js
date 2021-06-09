@@ -1,8 +1,6 @@
 import { getAllBlogs } from '../../lib/api';
 import Header from '../../components/header';
 import Image from 'next/image';
-import Section from '../../components/blog/section';
-import BlogEntry from '../../components/blog/blog-entry';
 import BlogContainer from '../../components/blog/blog-container';
 export default function Blog({ allPosts }){
     const menuLinks = [
@@ -28,7 +26,6 @@ export default function Blog({ allPosts }){
                             reactBlogs.map(blog => <BlogEntry key={blog.title} blog={blog}/>)
                         } 
                     </div>
-
                 </div> */}
                 <BlogContainer section='React' blogs={reactBlogs}/>
             </div>

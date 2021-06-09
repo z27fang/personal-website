@@ -6,7 +6,6 @@ import Section from './section';
 // container placeholder, will be removed if implemented in index
 export default function BlogContainer({ section, blogs }) {
 
-
     return (
         <div className="fixed left-0 top-28 right-0 overflow-y-scroll max-h-full">
             <div className="max-w-7xl flex flex-col mx-auto">
