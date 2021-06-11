@@ -2,7 +2,7 @@
 title: "React 源码阅读 - React hooks part 1"
 excerpt: "这篇文章的主旨是理清楚从我们调用一个hook，比如const [foo, setFoo] = useState('bar')中，从调用useState到得到 foo, setFoo这之间发生了什么，以及这个useState是如何保证state的更新。"
 category: "react"
-# coverImage: "/assets/blog/hello-world/cover.jpg"
+coverImage: "/react.svg.png"
 date: "2021-03-24T05:35:07.322Z"
 author:
   name: Zihao

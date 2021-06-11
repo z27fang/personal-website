@@ -21,9 +21,6 @@ module.exports = {
         "footer-gray": "#a0aec0",
         "button-yellow": "#ffbe3d"
       },
-      spacing: {
-        28: "7rem"
-      },
       letterSpacing: {
         tighter: "-.04em"
       },
@@ -33,6 +30,14 @@ module.exports = {
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
         medium: "0 8px 30px rgba(0, 0, 0, 0.12)"
+      },
+      keyframes: {
+        flip: {
+          transform: 'rotateY(180deg)'
+        }
+      },
+      animation: {
+        flip: "flip"
       }
     }
   }
