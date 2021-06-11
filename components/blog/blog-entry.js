@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function BlogEntry({ blog }){
     const {
         title,
@@ -15,16 +17,18 @@ export default function BlogEntry({ blog }){
         hover:bg-gray-300 
         hover:bg-opacity-25
         hover:border-gray-400">
-            <div>
-                <p className="font-serif text-xl
-                border-b-2
-                border-gray-400
-                font-medium
-                border-transparent
-                group-hover:border-gray-500">{title}</p>
-                <p className="italic text-xs my-1">{date + " " + author.name}</p>
-                <p className="font-sans font-light">{excerpt}</p>
-            </div>
+            <Link as={`/blog/${slug}`} href="/blog/[slug]">
+                <div>
+                    <p className="font-serif text-xl
+                    border-b-2
+                    border-gray-400
+                    font-medium
+                    border-transparent
+                    group-hover:border-gray-500">{title}</p>
+                    <p className="italic text-xs my-1">{date + " " + author.name}</p>
+                    <p className="font-sans font-light">{excerpt}</p>
+                </div> 
+            </Link>
         </div>
     )
 }
