@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import BlogEntry from './blog-entry';
 import Section from './section';
-
 
 // container placeholder, will be removed if implemented in index
 export default function BlogContainer({ section, blogs }) {

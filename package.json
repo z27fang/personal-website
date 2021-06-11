@@ -16,6 +16,8 @@
     "react-redux": "^7.2.4",
     "react-resizable": "^3.0.1",
     "react-scripts": "4.0.3",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
