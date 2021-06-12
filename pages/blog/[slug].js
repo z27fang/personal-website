@@ -3,6 +3,7 @@ import { getAllBlogs, getBlogBySlug } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import { CMS_NAME } from '../../lib/constants';
 import Article from '../../components/blog/article';
+import BlogProgress from '../../components/blog/blog-progress';
 
 export default function PostPage({ blog, morePosts, preview }) {
 
@@ -12,9 +13,9 @@ export default function PostPage({ blog, morePosts, preview }) {
             <div> ERROR </div>
         )
     }
-
     return (
         <div>
+            <BlogProgress/>
             {
                 router.isFallback ? ( 
                 <div>Loading...</div>

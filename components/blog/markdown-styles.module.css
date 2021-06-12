@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-	@apply my-6;
+	@apply text-base my-6;
 }
 
 .markdown h2 {
@@ -18,5 +18,13 @@
 }
 
 .markdown pre {
-	@apply text-sm bg-gray-200
+	@apply text-sm bg-gray-200 overflow-x-scroll
+}
+
+.markdown code {
+	@apply text-sm bg-gray-200 overflow-x-scroll
+}
+
+.markdown a {
+	@apply border-b-2 border-gray-500
 }
