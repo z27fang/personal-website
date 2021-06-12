@@ -37,8 +37,6 @@ export default function BlogEntry({ blog }){
                             <div className={`h-full ${showExcerpt ? styles['fade-in'] : styles['fade-out']} `}>{excerpt}</div> :
                             <img className={`h-full ${showExcerpt ? styles['fade-out'] : styles['fade-in']}`} src={coverImage}/>
                         }
-                        {/* <div className="h-full transition duration-500 ease-in-out">{excerpt}</div> :
-                        <img className="h-full transition duration-500 ease-in-out z-100" src={coverImage}/> */}
                     </div>
                     <div className="bg-blue-200 border-t-2 border-black p-2 h-16">
                         <p className="font-serif text-md
