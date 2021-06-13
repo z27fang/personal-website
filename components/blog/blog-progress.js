@@ -12,14 +12,11 @@ export default function BlogProgress() {
     }, [])
 
     return (
-        <>
-           <div className="sticky left-0 top-0 h-2 bg-gray-300 w-full">
-                <div className="sticky left-0 h-2 bg-gray-700 z-10"
-                style={{
-                    width: `${scrollPct}%`
-                }}/>
-            </div>
-        </>
-
+        <div className="sticky left-0 top-0 h-2 bg-gray-300 w-screen">
+            <div className="sticky left-0 h-2 bg-gray-700 z-10"
+            style={{
+                width: `${scrollPct}%`
+            }}/>
+        </div>
     )
 }

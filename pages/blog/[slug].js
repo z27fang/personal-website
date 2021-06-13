@@ -14,19 +14,23 @@ export default function PostPage({ blog, morePosts, preview }) {
         )
     }
     return (
-        <div>
-            <BlogProgress/>
-            {
-                router.isFallback ? ( 
-                <div>Loading...</div>
-                ) : (
-                    <>
-                        <Article content={blog.content}/>
-                    </>
-                )
+        <>
+            <div className="min-h-scren">
+                <BlogProgress/>
+                <main>
+                    <div className="container mx-auto px-5">
+                        {
+                            router.isFallback ? ( 
+                            <div>Loading...</div>
+                            ) : (
+                            <Article content={blog.content}/>
+                            )
 
-            }
-        </div>
+                        }
+                    </div>
+                </main>
+            </div>
+        </>
     )
 }
 

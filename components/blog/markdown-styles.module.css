@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-	@apply text-base my-6;
+	@apply text-base my-6 overflow-x-scroll;
 }
 
 .markdown h2 {
