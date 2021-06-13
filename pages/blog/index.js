@@ -5,7 +5,6 @@ import BlogContainer from '../../components/blog/blog-container';
 export default function Blog({ allPosts }){
     const menuLinks = [
         { href: "/blog/", name: "Blog" },
-        { href: "/gallary/", name: "Gallary" },
         { href: "/about/", name: "About"}
       ];
     console.log(allPosts);

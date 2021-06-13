@@ -1,7 +1,11 @@
 import React, { useState, useRef } from "react";
 import type from "./draggable-dropdown.module.css";
 import Draggable from "react-draggable";
-
+/**
+ * NOT USED
+ * @param {*} props 
+ * @returns 
+ */
 export default function DraggableDropdown(props) {
 
     const [isExpended, setIsExpended] = useState(false);
@@ -9,8 +13,6 @@ export default function DraggableDropdown(props) {
     const [transformCSS, setTransformCSS] = useState({
         'transform': 'translate(0px, 0px)'
     })
-    // console.log(props);
-    // console.log(type['draggable-header'])
     const items = props.contents;
     
     const itemStyle = {
@@ -20,7 +22,6 @@ export default function DraggableDropdown(props) {
     }
 
     const onDragHandler = (e, d) => {
-        // console.log(e);
         setTransformCSS({
             'transform': `translate(${d.x}px, ${d.y}px)`
         })
