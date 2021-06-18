@@ -22,6 +22,54 @@ export default function About() {
             jobTitle: 'job2',
             jobTime: '1111-33-33 ~ 1111-44-44',
             jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
+        },
+
+        {
+            companyName: 'Company 2 Long Name',
+            jobTitle: 'job2',
+            jobTime: '1111-33-33 ~ 1111-44-44',
+            jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
         }
     ]
 
@@ -35,7 +83,7 @@ export default function About() {
             </div>
 
             <Header menuLinks={menuLinks} selectedTab="/about/" />
-            <div className="fixed left-0 top-28 right-0 max-h-full mb-24 mt-4">
+            <div className="mb-24 mt-28">
                 <div className="flex flex-col items-center max-w-6xl mx-auto">
                     {
                         jobs.map(job => 

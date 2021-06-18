@@ -33,7 +33,7 @@ export default function BlogEntry({ blog }){
                     <div className="bg-gray-500 flex justify-center h-32">
                         {
                             showExcerpt ?
-                            <div className={`h-full ${showExcerpt ? styles['fade-in'] : styles['fade-out']} `}>{excerpt}</div> :
+                            <div className={`h-full ${showExcerpt ? styles['fade-in'] : styles['fade-out']} p-2`}>{excerpt}</div> :
                             <img className={`h-full ${showExcerpt ? styles['fade-out'] : styles['fade-in']}`} src={coverImage}/>
                         }
                     </div>
