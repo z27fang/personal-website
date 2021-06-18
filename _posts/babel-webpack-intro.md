@@ -1,4 +1,19 @@
+---
+title: "Babel and Webpack"
+excerpt: "This article is an introduction to Babel and Webpack, and some code reading on what's their expected behavior."
+category: "babel"
+coverImage: "/react.svg.png"
+date: "2021-06-17T05:35:07.322Z"
+author:
+  name: Zihao
+  picture: "/assets/blog/authors/tim.jpeg"
+# ogImage:
+#   url: "/assets/blog/hello-world/cover.jpg"
+---
+
 ## Webpack and Babel (1) - introduction
+
+
 
 ### Why Webpack?
 
