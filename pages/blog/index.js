@@ -9,7 +9,7 @@ export default function Blog({ allPosts }){
       ];
  
     const reactBlogs = allPosts.filter(post => post.category === 'react');
-    const babelBlogs = allPosts.filter(post => post.category === 'babel');
+    const babelBlogs = allPosts.filter(post => post.category === 'JS Dev');
     return (
         <div>
             <Image src="/bg3.jpg"
@@ -19,7 +19,7 @@ export default function Blog({ allPosts }){
             <div className="fixed left-0 top-28 right-0 overflow-y-scroll max-h-full mb-24 mt-4">
                 <div className="flex flex-col">
                     <BlogContainer section='React' blogs={reactBlogs}/>
-                    <BlogContainer section='Babel' blogs={babelBlogs}/>
+                    <BlogContainer section='JS Dev' blogs={babelBlogs}/>
                 </div>
             </div>
         </div>

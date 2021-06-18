@@ -15,18 +15,17 @@ export default function BlogEntry({ blog }){
     const [showExcerpt, setShowExcerpt] = useState(false)
 
     const onMouseEnter = () => {
-        console.log("mouse enter")
         setShowExcerpt(true)
     }
 
     const onMouseLeave = () => {
-        console.log("mouse leave")
         setShowExcerpt(false)
     }
 
     return (
         <div className="group md:w-1/4 w-full bg-white cursor-pointer m-4 h-48 overflow-hidden rounded-lg
-        hover:shadow-lg"
+        hover:shadow-lg
+        hover:scale-y-110 transform transition duration-200"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}>
             <Link as={`/blog/${slug}`} href="/blog/[slug]">

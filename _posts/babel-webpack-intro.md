@@ -1,7 +1,7 @@
 ---
 title: "Babel and Webpack"
 excerpt: "This article is an introduction to Babel and Webpack, and some code reading on what's their expected behavior."
-category: "babel"
+category: "JS Dev"
 coverImage: "/react.svg.png"
 date: "2021-06-17T05:35:07.322Z"
 author:

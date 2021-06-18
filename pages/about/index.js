@@ -10,12 +10,14 @@ export default function About() {
 
     const jobs = [
         {
+            companyName: 'COMPANY 1',
             jobTitle: 'job1',
             jobTime: '1111-11-11 ~ 1111-22-22',
             jobDescription: ['duty1 abcde', 'duty2 defgasdf', 'duty3 fanwekfjnasd']
         },
 
         {
+            companyName: 'Company 2 Long Name',
             jobTitle: 'job2',
             jobTime: '1111-33-33 ~ 1111-44-44',
             jobDescription: ['fff  123321', '111 asdfasdf', '5555 asdfasfsadf']
