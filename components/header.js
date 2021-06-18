@@ -23,12 +23,12 @@ export default function Header({ menuLinks, selectedTab }){
     selectedTab = selectedTab || null;
 
     return (
-        <header className="py-10 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border">
+        <header className="pt-8 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400 bg-opacity-20">
             <div className="max-w-7xl flex items-center mx-auto box-border justify-between">
                 {/* <div className="cursor-pointer box-border h-5 text-white text-lg z-10 p-0 top-0">Home</div> */}
                 <MenuLink href="/" selectedTab={null}>Home</MenuLink>
                 <div className="hidden md:flex">
-                    <div className="opacity-100 z-10 shadow-none flex flex-row p-0 static items-center inset-x-0 top-0 box-border ">
+                    <div className="opacity-80 z-10 shadow-none flex flex-row p-0 static items-center inset-x-0 top-0 box-border ">
                         {menuLinks.map((menulink, index) => (
                         <MenuLink href={menulink.href} key={index} selectedTab={selectedTab}>
                             {menulink.name}
