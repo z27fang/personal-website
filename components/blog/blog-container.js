@@ -5,7 +5,7 @@ import Section from './section';
 export default function BlogContainer({ section, blogs }) {
 
     return (
-        <div className="overflow-y-scroll max-h-full">
+        <div>
             <div className="max-w-7xl flex flex-col mx-auto">
                 <Section section={section}/>
                 <div className="flex md:flex-row flex-col px-8">

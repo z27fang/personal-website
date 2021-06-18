@@ -16,7 +16,7 @@ export default function WorkContainer({ jobInfo }) {
 
 
 	return (
-		<div className="w-full bg-white bg-opacity-20 rounded-md flex flex-row my-4 h-36 p-1.5 shadow-md transform transition hover:scale-y-110 duration-200">
+		<div className="w-full bg-white bg-opacity-20 rounded-md flex flex-row my-4 h-36 p-1.5 shadow-md transform transition hover:scale-110 duration-200">
 			<div className="h-full w-48 flex justify-center">
 				<img className="h-full" src="/react.svg.png"/>
 			</div>

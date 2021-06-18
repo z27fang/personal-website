@@ -1,6 +1,7 @@
 import Header from '../../components/header';
 import Image from 'next/image';
 import WorkContainer from '../../components/about/work-container';
+import {bgWrap} from '../pages.module.css';
 
 export default function About() {
     const menuLinks = [
@@ -27,11 +28,14 @@ export default function About() {
 
     return (
         <div>
-            <Image src="/bg3.jpg"
-                layout="fill"
-                objectFit="cover" />
+            <div className={bgWrap}>
+                <Image src="/bg3.jpg"
+                    layout="fill"
+                    objectFit="cover" />
+            </div>
+
             <Header menuLinks={menuLinks} selectedTab="/about/" />
-            <div className="fixed left-0 top-28 right-0 overflow-y-scroll max-h-full mb-24 mt-4">
+            <div className="fixed left-0 top-28 right-0 max-h-full mb-24 mt-4">
                 <div className="flex flex-col items-center max-w-6xl mx-auto">
                     {
                         jobs.map(job => 

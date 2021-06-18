@@ -9,7 +9,7 @@ function Home() {
       ];
 
     return  (
-        <main className="overflow-scroll">
+        <main>
             <Header menuLinks={menuLinks} selectedTab={null}/>
             <Image src="/bg1.jpg" layout="fill" objectFit="cover"/>
             <div className="fixed top-1/2 w-full flex flex-col justify-center items-center text-center">

@@ -1,20 +1,19 @@
 @tailwind base;
 
 ::-webkit-scrollbar {
-  width: 20px;
-  padding: 0px;
-  background-color: transparent;
+  width: 3px!important;
+  height: 3px!important;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: transparent;
+  --tw-bg-opacity: 1!important;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity))!important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
-  border-radius: 20px;
-  border: 6px solid transparent;
-  background-clip: content-box;
+  border-radius: .25rem!important;
+  --tw-bg-opacity: 1!important;
+  background-color: rgba(156,163,175,var(--tw-bg-opacity))!important;
 }
 
 ::-webkit-scrollbar-thumb:hover {

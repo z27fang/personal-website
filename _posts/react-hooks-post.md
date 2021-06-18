@@ -155,7 +155,7 @@ export type Fiber = {|
   - ContextOnlyDispatcher 仅有两次调用，分别为初始化(renderWithHooks(line:348))，以及当出现 error 的时候(resetHooksAfterThrow(line:545))，这里都将 ReactCurrentDispatcher.current 设置为 ContextOnlyDispatcher, 这时候，所有的 hook 调用都将抛出异常(throwInvalidHookError(line:289))
   - 我们可以理解为这个 dispatcher 是用来设置初值的，类似于我们在使用一个变量前先将它定义为 null。
 
-- **HooksDispatcherOnMount/HooksDispatcherOnUpdate/HooksDispatcherOnRerender**
+- **HooksDispatcherOnRerender**
   - 这里我们直接看下代码
   - ```Javascript
     export function renderWithHooks<Props, SecondArg>(

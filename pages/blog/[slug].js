@@ -15,7 +15,7 @@ export default function PostPage({ blog, morePosts, preview }) {
     }
     return (
         <>
-            <div className="min-h-scren">
+            <div className="min-h-screen max-w-full">
                 <BlogProgress/>
                 <main>
                     <div className="container mx-auto px-5">

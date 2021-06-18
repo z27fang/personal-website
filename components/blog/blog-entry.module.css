@@ -1,9 +1,9 @@
 .fade-in {
-    animation: fadeIn .8s;
-    -webkit-animation: fadeIn .8s;
-    -moz-animation: fadeIn .8s;
-    -o-animation: fadeIn .8s;
-    -ms-animation: fadeIn .8s;
+    animation: fadeIn .3s;
+    -webkit-animation: fadeIn .3s;
+    -moz-animation: fadeIn .3s;
+    -o-animation: fadeIn .3s;
+    -ms-animation: fadeIn .3s;
 }
 @keyframes fadeIn {
     0% {opacity:0;}
@@ -31,11 +31,11 @@
 }
 
 .fade-out {
-    animation: fadeOut .8s;
-    -webkit-animation: fadeOut .8s;
-    -moz-animation: fadeOut .8s;
-    -o-animation: fadeOut .8s;
-    -ms-animation: fadeOut .8s;
+    animation: fadeOut .3s;
+    -webkit-animation: fadeOut .3s;
+    -moz-animation: fadeOut .3s;
+    -o-animation: fadeOut .3s;
+    -ms-animation: fadeOut .3s;
 }
 @keyframes fadeOut {
     0% {opacity:1;}
@@ -64,7 +64,7 @@
 
 /* .ripple {
     background-position: center;
-    transition: background 0.8s;
+    transition: background 0.3s;
 }
 
 .ripple:hover {

@@ -23,9 +23,9 @@ export default function BlogEntry({ blog }){
     }
 
     return (
-        <div className="group md:w-1/4 w-full bg-white cursor-pointer m-4 h-48 overflow-hidden rounded-lg
+        <div className="group md:w-1/4 w-full bg-white cursor-pointer m-4 h-48 rounded-lg overflow-hidden
         hover:shadow-lg
-        hover:scale-y-110 transform transition duration-200"
+        hover:scale-110 transform transition duration-200"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}>
             <Link as={`/blog/${slug}`} href="/blog/[slug]">
