@@ -7,10 +7,9 @@ export default function Blog({ allPosts }){
         { href: "/blog/", name: "Blog" },
         { href: "/about/", name: "About"}
       ];
-    console.log(allPosts);
+ 
     const reactBlogs = allPosts.filter(post => post.category === 'react');
     const babelBlogs = allPosts.filter(post => post.category === 'babel');
-    
     return (
         <div>
             <Image src="/bg3.jpg"
