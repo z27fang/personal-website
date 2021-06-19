@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 function MenuLink(props) {
     const className = props.selectedTab === props.href ? 

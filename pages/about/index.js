@@ -1,12 +1,11 @@
 import Header from '../../components/header';
-import Image from 'next/image';
 import WorkContainer from '../../components/about/work-container';
-import {bgWrap} from '../pages.module.css';
+import {bgWrap, bgImage} from '../pages.module.css';
 
 export default function About() {
     const menuLinks = [
         { href: "/blog/", name: "Blog" },
-        { href: "/about/", name: "About" }
+        { href: "/about", name: "About" }
     ];
 
     const jobs = [
@@ -77,12 +76,10 @@ export default function About() {
     return (
         <div>
             <div className={bgWrap}>
-                <Image src="/assets/bg3.jpg"
-                    layout="fill"
-                    objectFit="cover" />
+                <img className={bgImage} src="/assets/bg3.jpg" alt="bg3"/>
             </div>
 
-            <Header menuLinks={menuLinks} selectedTab="/about/" />
+            <Header menuLinks={menuLinks} selectedTab="/about" />
             <div className="mb-24 mt-28">
                 <div className="flex flex-col items-center max-w-6xl mx-auto">
                     {

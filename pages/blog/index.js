@@ -1,13 +1,12 @@
 import { getAllBlogs } from '../../lib/api';
 import Header from '../../components/header';
-import Image from 'next/image';
 import BlogContainer from '../../components/blog/blog-container';
-import {bgWrap} from '../pages.module.css';
+import {bgWrap, bgImage} from '../pages.module.css';
 
 export default function Blog({ allPosts }){
     const menuLinks = [
         { href: "/blog/", name: "Blog" },
-        { href: "/about/", name: "About"}
+        { href: "/about", name: "About"}
       ];
  
     const reactBlogs = allPosts.filter(post => post.category === 'react');
@@ -15,10 +14,9 @@ export default function Blog({ allPosts }){
     return (
         <div>
             <div className={bgWrap}>
-                <Image
+                <img className={bgImage}
+                alt="bg3"
                 src="/assets/bg3.jpg"
-                layout="fill"
-                objectFit="cover"
                 quality={100}/>
             </div>
             <Header menuLinks={menuLinks} selectedTab="/blog/"/>
