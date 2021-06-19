@@ -21,7 +21,7 @@ function Home() {
             <div className="fixed top-1/4 w-full flex flex-col justify-center items-center text-center">
                 <div className="md:text-5xl text-xl text-white font-serif w-full mx-auto flex flex-col items-center">
                     <div className="flex flex-row items-center justify-center">
-                        <img src="/avatar.jpg" alt="avatar" className="w-24 h-24 rounded-full border-2 mx-4"/>
+                        <img src="/assets/avatar.jpg" alt="avatar" className="w-24 h-24 rounded-full border-2 mx-4"/>
                         <div className="h-20 border-r-2 border-white"/>
                         <div className="ml-4">Zihao Fang</div>
                     </div>
