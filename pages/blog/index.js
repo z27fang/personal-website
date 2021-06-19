@@ -16,7 +16,7 @@ export default function Blog({ allPosts }){
         <div>
             <div className={bgWrap}>
                 <Image
-                src="/bg3.jpg"
+                src="/assets/bg3.jpg"
                 layout="fill"
                 objectFit="cover"
                 quality={100}/>

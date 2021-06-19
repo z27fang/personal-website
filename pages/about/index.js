@@ -77,7 +77,7 @@ export default function About() {
     return (
         <div>
             <div className={bgWrap}>
-                <Image src="/bg3.jpg"
+                <Image src="/assets/bg3.jpg"
                     layout="fill"
                     objectFit="cover" />
             </div>

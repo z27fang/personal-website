@@ -1,8 +1,8 @@
 ---
 title: "Babel and Webpack"
-excerpt: "This article is an introduction to Babel and Webpack, and some code reading on what's their expected behavior."
+excerpt: "This article is an introduction to Babel and Webpack, and some code reading on their behavior."
 category: "JS Dev"
-coverImage: "/react.svg.png"
+coverImage: "/assets/react.svg.png"
 date: "2021-06-17T05:35:07.322Z"
 author:
   name: Zihao
@@ -16,6 +16,7 @@ author:
 
 
 ### Why Webpack?
+
 abc def ghi 
 <!-- 当你在开发一个前端的应用的时候，一定会遇到各种需求，例如：
 
