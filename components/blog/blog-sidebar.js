@@ -31,11 +31,11 @@ export default function BlogSidebar({ allPosts }) {
 	};
 
 	return (
-		<div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100 
+		<div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100 overflow-y-scroll
 		${showFull ? "translate-x-0" : "-translate-x-32"} `}
 		onMouseEnter={onMouseEnter}
 		onMouseLeave={onMouseLeave}>
-			<div className={`flex flex-col max-h-full overflow-y-scroll
+			<div className={`flex flex-col max-h-full
 			${showFull ? "items-start" : "items-end"}`}>
 				<div>
 					{
