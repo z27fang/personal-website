@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 function BlogItemSmall({ children, className }){
 	return (
@@ -11,7 +12,7 @@ function BlogItemSmall({ children, className }){
 function BlogItemBase({ children, className }){
 	return (
 		<div className={`bg-gray-500 w-44 h-12 border-b-2 border-black ${className}`}>
-			<div className="p-4 border-l-8 border-transparent hover:border-black">
+			<div className="p-4 transform transition hover:scale-110 duration-100">
 				{children}
 			</div>
 		</div>
@@ -41,7 +42,9 @@ export default function BlogSidebar({ allPosts }) {
 					{
 						showFull ?
 						<BlogItemBase>
-							<p className="bold">Home</p>
+							<Link href="/">
+								<p className="bold">Home</p>
+							</Link>
 						</BlogItemBase> :
 						<BlogItemSmall>
 							<img src="/assets/home.png" 
@@ -53,7 +56,36 @@ export default function BlogSidebar({ allPosts }) {
 
 				<div>
 					{
-						
+						showFull ?
+						<BlogItemBase>
+							<Link href="/blog/">
+								<p className="bold">Blogs</p>
+							</Link>
+						</BlogItemBase> :
+						<BlogItemSmall>
+							<img src="/assets/blog.png"
+							className="w-full h-full p-4"
+							alt="blog">
+							</img>
+						</BlogItemSmall>
+
+					}
+				</div>
+				<div>
+					{
+						showFull ?
+						<BlogItemBase>
+							<Link href="/about/">
+								<p className="bold">About</p>
+							</Link>
+						</BlogItemBase> :
+						<BlogItemSmall>
+							<img src="/assets/about.png"
+							className="w-full h-full p-4"
+							alt="about">
+							</img>
+						</BlogItemSmall>
+
 					}
 				</div>
 			</div>
