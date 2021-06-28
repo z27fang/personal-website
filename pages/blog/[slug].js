@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { getAllBlogs, getBlogBySlug } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
-import { CMS_NAME } from '../../lib/constants';
 import Article from '../../components/blog/article';
 import BlogProgress from '../../components/blog/blog-progress';
+import BlogSidebar from '../../components/blog/blog-sidebar';
 
 export default function PostPage({ blog, morePosts, preview }) {
 
@@ -17,16 +17,21 @@ export default function PostPage({ blog, morePosts, preview }) {
         <>
             <div className="min-h-screen max-w-full">
                 <BlogProgress/>
+                <BlogSidebar/>
                 <main>
-                    <div className="container mx-auto px-5">
-                        {
-                            router.isFallback ? ( 
-                            <div>Loading...</div>
-                            ) : (
-                            <Article content={blog.content}/>
-                            )
+                    <div className="flex flex-row">
+                        <div className="w-2/12"></div>
+                        <div className="container mx-auto px-5 w-8/12">
+                            {
+                                router.isFallback ? ( 
+                                <div>Loading...</div>
+                                ) : (
+                                <Article content={blog.content}/>
+                                )
 
-                        }
+                            }
+                        </div>
+                        <div className="w-2/12"></div>
                     </div>
                 </main>
             </div>

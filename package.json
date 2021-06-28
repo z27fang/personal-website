@@ -46,7 +46,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "husky": "^6.0.0",
     "postcss": "^8.2.15",
-    "tailwindcss": "^2.1.2"
+    "tailwindcss": "^2.2.2"
   }
 }
