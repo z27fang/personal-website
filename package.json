@@ -24,7 +24,8 @@
     "start": "next start",
     "build": "next build",
     "test": "next test",
-    "dev": "next dev"
+    "dev": "next dev",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "autoprefixer": "^10.2.5",
     "husky": "^6.0.0",
     "postcss": "^8.2.15",
