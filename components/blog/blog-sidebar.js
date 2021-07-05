@@ -12,7 +12,7 @@ function BlogItemSmall({ children, className }){
 function BlogItemBase({ children, className }){
 	return (
 		<div className={`bg-gray-500 w-44 h-12 border-b-2 border-black ${className}`}>
-			<div className="p-4 transform transition hover:scale-110 duration-100">
+			<div className="p-4 transform transition hover:scale-110 cursor-pointer duration-100">
 				{children}
 			</div>
 		</div>
