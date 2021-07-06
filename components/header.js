@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 
-function MenuLink(props) {
-    const className = props.selectedTab === props.href ? 
-    "py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 border-opacity-100":
-    "py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300"
-    return (
+function MenuLink ({ selectedTab, href, children }) {
+  const className = selectedTab === href
+    ? 'py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 border-opacity-100'
+    : 'py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300'
+  return (
     <div className="px-8 cursor-pointer">
-        <Link 
-        href={props.href || ""}>
+        <Link
+        href={href || ''}>
             <p className={className}>
-                { props.children }
+                { children }
             </p>
         </Link>
     </div>)
 }
+MenuLink.propTypes = {
+  selectedTab: PropTypes.string,
+  href: PropTypes.string,
+  children: PropTypes.any
+}
 
+export default function Header ({ menuLinks, selectedTab }) {
+  const [showMenu, setShowMenu] = useState(false)
+  selectedTab = selectedTab || null
 
-export default function Header({ menuLinks, selectedTab }){
-    const [showMenu, setShowMenu] = useState(false);
-    selectedTab = selectedTab || null;
-
-    return (
-        <header className="pt-8 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400 
+  return (
+        <header className="pt-8 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400
         bg-opacity-20 backdrop-filter backdrop-blur">
             <div className="max-w-7xl flex items-center mx-auto box-border justify-between">
                 {/* <div className="cursor-pointer box-border h-5 text-white text-lg z-10 p-0 top-0">Home</div> */}
@@ -52,7 +57,7 @@ export default function Header({ menuLinks, selectedTab }){
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d={showMenu ? "M6 18L18 6M6 6l12 12" : "M4 8h16M4 16h16"}
+                        d={showMenu ? 'M6 18L18 6M6 6l12 12' : 'M4 8h16M4 16h16'}
                         />
                     </svg>
                 </div>
@@ -61,13 +66,13 @@ export default function Header({ menuLinks, selectedTab }){
             <div className="flex md:hidden">
                 <div
                 className={
-                    "fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-80 bg-gray-700 transition duration-500 linear delay-0 transform " +
+                    'fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-80 bg-gray-700 transition duration-500 linear delay-0 transform ' +
                     (showMenu
-                    ? "translate-y-0 shadow-2xl opacity-1"
-                    : "-translate-y-full opacity-0")
+                      ? 'translate-y-0 shadow-2xl opacity-1'
+                      : '-translate-y-full opacity-0')
                 }
                 >
-                {menuLinks.map((menulink,id) => (
+                {menuLinks.map((menulink, id) => (
                     <MenuLink key={id} href={menulink.href} selectedTab={selectedTab}>
                         {menulink.name}
                     </MenuLink>
@@ -75,6 +80,9 @@ export default function Header({ menuLinks, selectedTab }){
                 </div>
             </div>
         </header>
-    )
-
+  )
+}
+Header.propTypes = {
+  menuLinks: PropTypes.any,
+  selectedTab: PropTypes.string
 }
