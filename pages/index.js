@@ -4,7 +4,7 @@ import {bgImage} from "./pages.module.css";
 
 function Description({ children, className }){
     return (
-        <div className={className || "mt-2 text-lg"}>{children}</div>
+        <div className={className || "mt-2 md:text-lg text-sm"}>{children}</div>
     )
 }
 
