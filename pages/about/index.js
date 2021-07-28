@@ -1,3 +1,4 @@
+import React from 'react'
 import Header from '../../components/header'
 import WorkContainer from '../../components/about/work-container'
 import { bgWrap, bgImage } from '../pages.module.css'
@@ -56,7 +57,7 @@ export default function About () {
                 <div className="flex flex-col items-center max-w-full mx-auto">
                     {
                         jobs.map(job =>
-                            <WorkContainer jobInfo={job}/>)
+                            <WorkContainer key={String(job)} jobInfo={job}/>)
                     }
                 </div>
             </div>
