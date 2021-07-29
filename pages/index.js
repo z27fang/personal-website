@@ -11,7 +11,7 @@ function Description ({ children, className }) {
 
 function Home () {
   const menuLinks = [
-    { href: '/blog/', name: 'Blog' },
+    { href: '/blog', name: 'Blog' },
     { href: '/about', name: 'About' }
   ]
 

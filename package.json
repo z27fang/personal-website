@@ -29,7 +29,8 @@
     "dev": "next dev",
     "prepare": "husky install",
     "lint": "eslint ./**/*.js",
-    "lint:fix": "eslint ./**/*.js --fix"
+    "lint:fix": "eslint ./**/*.js --fix",
+    "commit": "commit"
   },
   "eslintConfig": {
     "extends": [
