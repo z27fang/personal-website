@@ -5,7 +5,7 @@ import { bgWrap, bgImage } from '../pages.module.css'
 
 export default function About () {
   const menuLinks = [
-    { href: '/blog/', name: 'Blog' },
+    { href: '/blog', name: 'Blog' },
     { href: '/about', name: 'About' }
   ]
 
