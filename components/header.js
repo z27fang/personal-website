@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 function MenuLink ({ selectedTab, href, children }) {
   const className = selectedTab === href
-    ? 'py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 border-opacity-100'
-    : 'py-2 text-white md:py-0 text-2xl border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300'
+    ? 'py-2 text-white md:py-0 md:text-2xl text-lg border-opacity-0 border-white border-b-4 border-opacity-100'
+    : 'py-2 text-white md:py-0 md:text-2xl text-lg border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300'
   return (
     <div className="px-8 cursor-pointer">
         <Link
@@ -27,7 +27,7 @@ export default function Header ({ menuLinks, selectedTab }) {
   selectedTab = selectedTab || null
 
   return (
-        <header className="pt-8 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400
+        <header className="md:pt-8 pt-0 md:h-auto h-10 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400
         bg-opacity-20 backdrop-filter backdrop-blur">
             <div className="max-w-7xl flex items-center mx-auto box-border justify-between">
                 {/* <div className="cursor-pointer box-border h-5 text-white text-lg z-10 p-0 top-0">Home</div> */}

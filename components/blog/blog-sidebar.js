@@ -35,6 +35,10 @@ export default function BlogSidebar ({ allPosts }) {
     setShowFull(true)
   }
 
+  const sidebarOnClick = () => {
+    setShowFull(!showFull)
+  }
+
   const onMouseLeave = () => {
     setShowFull(false)
   }
@@ -43,7 +47,8 @@ export default function BlogSidebar ({ allPosts }) {
   <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100 overflow-y-scroll
     ${showFull ? 'translate-x-0' : '-translate-x-32'} `}
     onMouseEnter={onMouseEnter}
-    onMouseLeave={onMouseLeave}>
+    onMouseLeave={onMouseLeave}
+    onClick={sidebarOnClick}>
       <div className={`flex flex-col max-h-full ${showFull ? 'items-start' : 'items-end'}`}>
         <div>
           {
