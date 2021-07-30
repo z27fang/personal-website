@@ -1,21 +1,21 @@
-import Link from 'next/link';
-import Header from "../components/header";
-import {bgImage} from "./pages.module.css";
+import React from 'react'
+import Link from 'next/link'
+import Header from '../components/header'
+import { bgImage } from './pages.module.css'
 
-function Description({ children, className }){
-    return (
-        <div className={className || "mt-2 text-lg"}>{children}</div>
-    )
+function Description ({ children, className }) {
+  return (
+        <div className={className || 'mt-2 md:text-lg text-sm'}>{children}</div>
+  )
 }
 
-function Home() {
+function Home () {
+  const menuLinks = [
+    { href: '/blog', name: 'Blog' },
+    { href: '/about', name: 'About' }
+  ]
 
-    const menuLinks = [
-        { href: "/blog/", name: "Blog" },
-        { href: "/about", name: "About"}
-      ];
-
-    return  (
+  return (
         <main>
             <Header menuLinks={menuLinks} selectedTab={null}/>
             <img className={bgImage} src="/assets/bg1.jpg" alt="bg1"/>
@@ -29,17 +29,17 @@ function Home() {
                     <div className="mt-12 bg-gray-600 bg-opacity-40 flex flex-col text-left rounded-md p-4 border-2 border-white">
                         <Description className="text-2xl">Welcome to my website!</Description>
                         <Description>🙍‍♂️  I am a developer with data background.</Description>
-                        <Description>🎓  I earned a bachlor's degree with Statistics major and Computer Science Minor at University of Waterloo.</Description>
+                        <Description>🎓  I earned a bachlor&#39;s degree with Statistics major and Computer Science Minor at University of Waterloo.</Description>
                         <Description>📚  I am learning Vite, React, ESBuild...(and many other stuff).</Description>
                         <Description>📸  Oh, I also like taking photos, I took this background at Victoria.</Description>
-                        <Description>👀  Learn more what I am capable of at 
+                        <Description>👀  Learn more what I am capable of at
                             <Link href="/about"><a className="border-b-2 border-white hover:text-blue-200 hover:border-blue-200"> About</a></Link>
                         </Description>
                     </div>
                 </div>
             </div>
         </main>
-    )
+  )
 }
 
 export default Home

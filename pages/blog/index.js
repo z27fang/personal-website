@@ -1,17 +1,18 @@
-import { getAllBlogs } from '../../lib/api';
-import Header from '../../components/header';
-import BlogContainer from '../../components/blog/blog-container';
-import {bgWrap, bgImage} from '../pages.module.css';
+import React from 'react'
+import { getAllBlogs } from '../../lib/api'
+import Header from '../../components/header'
+import BlogContainer from '../../components/blog/blog-container'
+import { bgWrap, bgImage } from '../pages.module.css'
 
-export default function Blog({ allPosts }){
-    const menuLinks = [
-        { href: "/blog/", name: "Blog" },
-        { href: "/about", name: "About"}
-      ];
- 
-    const reactBlogs = allPosts.filter(post => post.category === 'react');
-    const devBlogs = allPosts.filter(post => post.category === 'JS Dev');
-    return (
+export default function Blog ({ allPosts }) {
+  const menuLinks = [
+    { href: '/blog', name: 'Blog' },
+    { href: '/about', name: 'About' }
+  ]
+
+  const reactBlogs = allPosts.filter(post => post.category === 'react')
+  const devBlogs = allPosts.filter(post => post.category === 'JS Dev')
+  return (
         <div>
             <div className={bgWrap}>
                 <img className={bgImage}
@@ -27,21 +28,20 @@ export default function Blog({ allPosts }){
                 </div>
             </div>
         </div>
-    )
+  )
 }
 
-
-export async function getStaticProps() {
-    const allPosts = getAllBlogs([
-        "title",
-        "date",
-        "slug",
-        "category",
-        "author",
-        "excerpt",
-        "coverImage"
-    ]);
-    return {
-        props: { allPosts }
-    }
+export async function getStaticProps () {
+  const allPosts = getAllBlogs([
+    'title',
+    'date',
+    'slug',
+    'category',
+    'author',
+    'excerpt',
+    'coverImage'
+  ])
+  return {
+    props: { allPosts }
+  }
 }
