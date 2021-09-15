@@ -12,7 +12,6 @@ export default function BlogEntry ({ blog }) {
     excerpt,
     coverImage
   } = blog
-  
 
   const [showExcerpt, setShowExcerpt] = useState(false)
 
