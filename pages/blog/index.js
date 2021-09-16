@@ -11,13 +11,13 @@ export default function Blog ({ allPosts }) {
     { href: '/about', name: 'About' }
   ]
 
-  const reactBlogs = allPosts.filter(post => post.category === 'react');
-  const devBlogs = allPosts.filter(post => post.category === 'JS Dev');
+  const reactBlogs = allPosts.filter(post => post.category === 'react')
+  const devBlogs = allPosts.filter(post => post.category === 'JS Dev')
 
   const tags = [
     {
       name: 'a',
-      children :  [
+      children: [
         {
           name: 'a-a'
         },

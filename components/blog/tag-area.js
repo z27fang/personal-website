@@ -1,29 +1,28 @@
-import { defaults } from 'autoprefixer';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react'
 
-function Tag(props) {
-    const {
-        tagContext,
-        selectNode,
-        deselectNode
-    } = props;
+function Tag (props) {
+  const {
+    tagContext,
+    selectNode,
+    deselectNode
+  } = props
 
-    const handleOnClick = () => {
-        let checked = tagContext.checked;
-        if(checked) {
-            deselectNode(tagContext);
-        } else {
-            selectNode(tagContext);
-        }
+  const handleOnClick = () => {
+    const checked = tagContext.checked
+    if (checked) {
+      deselectNode(tagContext)
+    } else {
+      selectNode(tagContext)
     }
+  }
 
-    return(
+  return (
         <div className={`border-white border-2 mx-1 px-1 border-radius-1 rounded-lg text-white cursor-pointer
-         ${tagContext.checked ? " bg-blue-500 bg-opacity-50" : ""}`}
+         ${tagContext.checked ? ' bg-blue-500 bg-opacity-50' : ''}`}
          onClick={handleOnClick}>
             {tagContext.name}
         </div>
-    )
+  )
 }
 /**
  * TODO: implement select and deselect
@@ -42,107 +41,106 @@ function Tag(props) {
  *     children: [tags] || None
  * }] || None
  * @param {Boolean} includeAll whether or not include the 'All' selector
- * @returns 
+ * @returns
  */
-export default function TagArea(props) {
-    const {
-        defaultSelectedTags,
-        tags
-    } = props;
+export default function TagArea (props) {
+  const {
+    defaultSelectedTags,
+    tags
+  } = props
 
-    const buildArrayFromMap = (tag, parentIdx, curArr) => {
-        let cCount = 0
-        curArr.push({
-            name: tag.name,
-            parent: parentIdx,
-            self: curArr.length,
-            children: []
-        });
-        let tagIdx = curArr.length - 1;
-        if( tag.children ){
-            console.log(tag.children);
-            tag.children.forEach(child => {
-                cCount += 1;
-                curArr[tagIdx].children.push(tagIdx + cCount);
-                cCount += buildArrayFromMap(child, tagIdx, curArr);
-            })
-        }
+  const buildArrayFromMap = (tag, parentIdx, curArr) => {
+    let cCount = 0
+    curArr.push({
+      name: tag.name,
+      parent: parentIdx,
+      self: curArr.length,
+      children: []
+    })
+    const tagIdx = curArr.length - 1
+    if (tag.children) {
+      console.log(tag.children)
+      tag.children.forEach(child => {
+        cCount += 1
+        curArr[tagIdx].children.push(tagIdx + cCount)
+        cCount += buildArrayFromMap(child, tagIdx, curArr)
+      })
+    }
 
-        return cCount
-    };
-    /**
+    return cCount
+  }
+  /**
      * Perform the initial check
-     * @param {*} i 
-     * @param {*} tagsArr 
+     * @param {*} i
+     * @param {*} tagsArr
      */
-    const performCheck = (i, tagsArr) => {
-        let tag = tagsArr[i]
-        if(tag.children){
-            tag.children.forEach(childIdx => {
-                if(tag.checked){
-                    console.log(tag)
-                    tagsArr[childIdx].checked = true;
-                }
-                performCheck(childIdx, tagsArr)
-            })
+  const performCheck = (i, tagsArr) => {
+    const tag = tagsArr[i]
+    if (tag.children) {
+      tag.children.forEach(childIdx => {
+        if (tag.checked) {
+          console.log(tag)
+          tagsArr[childIdx].checked = true
         }
+        performCheck(childIdx, tagsArr)
+      })
+    }
+  }
+
+  const initialFlattenedTags = useMemo(
+    () => {
+      const tagsArr = []
+      buildArrayFromMap(tags[0], -1, tagsArr)
+      tagsArr.forEach(tag => { tag.checked = defaultSelectedTags.includes(tag.name) })
+      performCheck(0, tagsArr)
+      return tagsArr
+    },
+    [tags])
+
+  const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags)
+
+  const checkUpwards = (node, tagsArr) => {
+    if (node.parent !== -1) {
+      // tagsArr[node.parent].checked = true;
+      const nodeSiblings = tagsArr[node.parent].children
+      let allSibChecked = true
+      nodeSiblings.forEach(sib => { allSibChecked = allSibChecked && tagsArr[sib].checked })
+      if (allSibChecked) {
+        tagsArr[node.parent].checked = true
+        checkUpwards(tagsArr[node.parent], tagsArr)
+      };
     };
+  }
 
-    const initialFlattenedTags = useMemo(
-        () => {
-            let tagsArr = [];
-            buildArrayFromMap(tags[0], -1, tagsArr);    
-            tagsArr.forEach(tag => tag.checked = defaultSelectedTags.includes(tag.name))
-            performCheck(0, tagsArr)
-            return tagsArr
-        },
-    [tags]);
-
-    const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags);
-
-
-    const checkUpwards = (node, tagsArr) => {
-        if(node.parent !== -1){
-            // tagsArr[node.parent].checked = true;
-            let nodeSiblings = tagsArr[node.parent].children;
-            let allSibChecked = true;
-            nodeSiblings.forEach(sib => allSibChecked = allSibChecked && tagsArr[sib].checked);
-            if(allSibChecked){
-                tagsArr[node.parent].checked = true;
-                checkUpwards(tagsArr[node.parent], tagsArr);
-            };
+  const checkDownwards = (node, tagsArr) => {
+    if (node.children) {
+      node.children.forEach(child => {
+        if (!tagsArr[child].checked) {
+          tagsArr[child].checked = true
+          checkDownwards(tagsArr[child], tagsArr)
         };
+      })
     };
+  }
 
-    const checkDownwards = (node, tagsArr) => {
-        if(node.children){
-            node.children.forEach(child => {
-                if(!tagsArr[child].checked){
-                    tagsArr[child].checked = true;
-                    checkDownwards(tagsArr[child], tagsArr);
-                };
-            });
-        };
+  const deCheckUpwards = (node, tagsArr) => {
+    if (node.parent !== -1) {
+      tagsArr[node.parent].checked = false
+      deCheckUpwards(tagsArr[node.parent], tagsArr)
     };
+  }
 
-    const deCheckUpwards = (node, tagsArr) => {
-        if(node.parent !== -1){
-            tagsArr[node.parent].checked = false;
-            deCheckUpwards(tagsArr[node.parent], tagsArr);
-        };
+  const deCheckDownwards = (node, tagsArr) => {
+    if (node.children) {
+      node.children.forEach(child => {
+        tagsArr[child].checked = false
+        deCheckDownwards(tagsArr[child], tagsArr)
+      })
     };
+  }
 
-    const deCheckDownwards = (node, tagsArr) => {
-        if(node.children){
-            node.children.forEach(child => {
-                tagsArr[child].checked = false;
-                deCheckDownwards(tagsArr[child], tagsArr);
-            });
-        };
-    };
-
-    /**
-     * 
+  /**
+     *
      * @param {*} node
      *      a node object which includes:
      *     {
@@ -150,37 +148,37 @@ export default function TagArea(props) {
      *          parent: int,
      *          children: int,
      *          checked: boolean
-     *      } 
+     *      }
      */
-    const selectNode = (node) => {
-        let flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
-        flattenedTagsCopy[node.self].checked = true;
-        checkUpwards(node, flattenedTagsCopy);
-        checkDownwards(node, flattenedTagsCopy);
-        setFlattenedTags(flattenedTagsCopy);
-    };
+  const selectNode = (node) => {
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
+    flattenedTagsCopy[node.self].checked = true
+    checkUpwards(node, flattenedTagsCopy)
+    checkDownwards(node, flattenedTagsCopy)
+    setFlattenedTags(flattenedTagsCopy)
+  }
 
-    const deselectNode = (node) => {
-        let flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
-        flattenedTagsCopy[node.self].checked = false;
-        deCheckUpwards(node, flattenedTagsCopy);
-        deCheckDownwards(node, flattenedTagsCopy);
-        setFlattenedTags(flattenedTagsCopy);
-    };
-    console.log(flattenedTags);
+  const deselectNode = (node) => {
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
+    flattenedTagsCopy[node.self].checked = false
+    deCheckUpwards(node, flattenedTagsCopy)
+    deCheckDownwards(node, flattenedTagsCopy)
+    setFlattenedTags(flattenedTagsCopy)
+  }
 
-    return (
+  return (
         <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
             <div className="flex flex-row">
                 {
                     flattenedTags.map(tag => {
-                        return <Tag tagContext={tag}
+                      return <Tag key={tag.name}
+                        tagContext={tag}
                         selectNode={selectNode}
-                        deselectNode={deselectNode}/>  
+                        deselectNode={deselectNode}/>
                     })
                 }
             </div>
         </div>
 
-    )
+  )
 }
