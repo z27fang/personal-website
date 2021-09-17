@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 
 function Tag (props) {
   const {
@@ -24,11 +24,68 @@ function Tag (props) {
         </div>
   )
 }
-/**
- * TODO: implement select and deselect
- */
-// const setSelectNode = (tags, )
 
+
+
+const checkUpwards = (node, tagsArr) => {
+  if (node.parent !== -1) {
+    // tagsArr[node.parent].checked = true;
+    const nodeSiblings = tagsArr[node.parent].children
+    let allSibChecked = true
+    nodeSiblings.forEach(sib => { allSibChecked = allSibChecked && tagsArr[sib].checked })
+    if (allSibChecked) {
+      tagsArr[node.parent].checked = true
+      checkUpwards(tagsArr[node.parent], tagsArr)
+    };
+  };
+}
+
+const checkDownwards = (node, tagsArr) => {
+  if (node.children) {
+    node.children.forEach(child => {
+      if (!tagsArr[child].checked) {
+        tagsArr[child].checked = true
+        checkDownwards(tagsArr[child], tagsArr)
+      };
+    })
+  };
+}
+
+const deCheckUpwards = (node, tagsArr) => {
+  if (node.parent !== -1) {
+    tagsArr[node.parent].checked = false
+    deCheckUpwards(tagsArr[node.parent], tagsArr)
+  };
+}
+
+const deCheckDownwards = (node, tagsArr) => {
+  if (node.children) {
+    node.children.forEach(child => {
+      tagsArr[child].checked = false
+      deCheckDownwards(tagsArr[child], tagsArr)
+    })
+  };
+}
+
+const buildArrayFromMap = (tag, parentIdx, curArr) => {
+  let cCount = 0
+  curArr.push({
+    name: tag.name,
+    parent: parentIdx,
+    self: curArr.length,
+    children: []
+  })
+  const tagIdx = curArr.length - 1
+  if (tag.children) {
+    tag.children.forEach(child => {
+      cCount += 1
+      curArr[tagIdx].children.push(tagIdx + cCount)
+      cCount += buildArrayFromMap(child, tagIdx, curArr)
+    })
+  }
+
+  return cCount
+}
 /**
  * A tree-based tag selecting system
  *  the default behaviour of the tree is:
@@ -46,29 +103,9 @@ function Tag (props) {
 export default function TagArea (props) {
   const {
     defaultSelectedTags,
-    tags
+    tags,
+    onChange
   } = props
-
-  const buildArrayFromMap = (tag, parentIdx, curArr) => {
-    let cCount = 0
-    curArr.push({
-      name: tag.name,
-      parent: parentIdx,
-      self: curArr.length,
-      children: []
-    })
-    const tagIdx = curArr.length - 1
-    if (tag.children) {
-      console.log(tag.children)
-      tag.children.forEach(child => {
-        cCount += 1
-        curArr[tagIdx].children.push(tagIdx + cCount)
-        cCount += buildArrayFromMap(child, tagIdx, curArr)
-      })
-    }
-
-    return cCount
-  }
   /**
      * Perform the initial check
      * @param {*} i
@@ -79,7 +116,6 @@ export default function TagArea (props) {
     if (tag.children) {
       tag.children.forEach(childIdx => {
         if (tag.checked) {
-          console.log(tag)
           tagsArr[childIdx].checked = true
         }
         performCheck(childIdx, tagsArr)
@@ -95,49 +131,16 @@ export default function TagArea (props) {
       performCheck(0, tagsArr)
       return tagsArr
     },
-    [tags])
+    [tags])  
 
-  const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags)
+  const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags);
 
-  const checkUpwards = (node, tagsArr) => {
-    if (node.parent !== -1) {
-      // tagsArr[node.parent].checked = true;
-      const nodeSiblings = tagsArr[node.parent].children
-      let allSibChecked = true
-      nodeSiblings.forEach(sib => { allSibChecked = allSibChecked && tagsArr[sib].checked })
-      if (allSibChecked) {
-        tagsArr[node.parent].checked = true
-        checkUpwards(tagsArr[node.parent], tagsArr)
-      };
-    };
-  }
-
-  const checkDownwards = (node, tagsArr) => {
-    if (node.children) {
-      node.children.forEach(child => {
-        if (!tagsArr[child].checked) {
-          tagsArr[child].checked = true
-          checkDownwards(tagsArr[child], tagsArr)
-        };
-      })
-    };
-  }
-
-  const deCheckUpwards = (node, tagsArr) => {
-    if (node.parent !== -1) {
-      tagsArr[node.parent].checked = false
-      deCheckUpwards(tagsArr[node.parent], tagsArr)
-    };
-  }
-
-  const deCheckDownwards = (node, tagsArr) => {
-    if (node.children) {
-      node.children.forEach(child => {
-        tagsArr[child].checked = false
-        deCheckDownwards(tagsArr[child], tagsArr)
-      })
-    };
-  }
+  useEffect(() => {
+    if(onChange) {
+      let selectedTags = flattenedTags.filter(tag => tag.checked).map(tag => tag.name);
+      onChange(selectedTags);
+    }
+  }, [flattenedTags]);
 
   /**
      *
@@ -151,24 +154,24 @@ export default function TagArea (props) {
      *      }
      */
   const selectNode = (node) => {
-    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
-    flattenedTagsCopy[node.self].checked = true
-    checkUpwards(node, flattenedTagsCopy)
-    checkDownwards(node, flattenedTagsCopy)
-    setFlattenedTags(flattenedTagsCopy)
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
+    flattenedTagsCopy[node.self].checked = true;
+    checkUpwards(node, flattenedTagsCopy);
+    checkDownwards(node, flattenedTagsCopy);
+    setFlattenedTags(flattenedTagsCopy);
   }
 
   const deselectNode = (node) => {
-    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
-    flattenedTagsCopy[node.self].checked = false
-    deCheckUpwards(node, flattenedTagsCopy)
-    deCheckDownwards(node, flattenedTagsCopy)
-    setFlattenedTags(flattenedTagsCopy)
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
+    flattenedTagsCopy[node.self].checked = false;
+    deCheckUpwards(node, flattenedTagsCopy);
+    deCheckDownwards(node, flattenedTagsCopy);
+    setFlattenedTags(flattenedTagsCopy);
   }
 
   return (
         <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
-            <div className="flex flex-row">
+            <div className="flex md:flex-row flex-col">
                 {
                     flattenedTags.map(tag => {
                       return <Tag key={tag.name}
