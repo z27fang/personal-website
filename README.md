@@ -5,7 +5,7 @@
   - [ ] touch screen optimization
     - [x] sidebar on blog page works with touchscreen
     - [ ] any potential further optimization coming in future...
-  - [ ] ES-lint integration on husky git hooks 
+  - [x] ES-lint integration on husky git hooks 
   - [ ] Tag system for blog page (ongoing...)
 - Known bugs:
   - [x] Too many redirect error while directly access url in browser
