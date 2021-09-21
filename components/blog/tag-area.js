@@ -25,8 +25,6 @@ function Tag (props) {
   )
 }
 
-
-
 const checkUpwards = (node, tagsArr) => {
   if (node.parent !== -1) {
     // tagsArr[node.parent].checked = true;
@@ -131,16 +129,16 @@ export default function TagArea (props) {
       performCheck(0, tagsArr)
       return tagsArr
     },
-    [tags])  
+    [tags])
 
-  const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags);
+  const [flattenedTags, setFlattenedTags] = useState(initialFlattenedTags)
 
   useEffect(() => {
-    if(onChange) {
-      let selectedTags = flattenedTags.filter(tag => tag.checked).map(tag => tag.name);
-      onChange(selectedTags);
+    if (onChange) {
+      const selectedTags = flattenedTags.filter(tag => tag.checked).map(tag => tag.name)
+      onChange(selectedTags)
     }
-  }, [flattenedTags]);
+  }, [flattenedTags])
 
   /**
      *
@@ -154,19 +152,19 @@ export default function TagArea (props) {
      *      }
      */
   const selectNode = (node) => {
-    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
-    flattenedTagsCopy[node.self].checked = true;
-    checkUpwards(node, flattenedTagsCopy);
-    checkDownwards(node, flattenedTagsCopy);
-    setFlattenedTags(flattenedTagsCopy);
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
+    flattenedTagsCopy[node.self].checked = true
+    checkUpwards(node, flattenedTagsCopy)
+    checkDownwards(node, flattenedTagsCopy)
+    setFlattenedTags(flattenedTagsCopy)
   }
 
   const deselectNode = (node) => {
-    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags));
-    flattenedTagsCopy[node.self].checked = false;
-    deCheckUpwards(node, flattenedTagsCopy);
-    deCheckDownwards(node, flattenedTagsCopy);
-    setFlattenedTags(flattenedTagsCopy);
+    const flattenedTagsCopy = JSON.parse(JSON.stringify(flattenedTags))
+    flattenedTagsCopy[node.self].checked = false
+    deCheckUpwards(node, flattenedTagsCopy)
+    deCheckDownwards(node, flattenedTagsCopy)
+    setFlattenedTags(flattenedTagsCopy)
   }
 
   return (
