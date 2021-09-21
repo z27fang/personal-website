@@ -1,6 +1,6 @@
 ---
-title: "React 源码阅读 - React hooks part 1"
-excerpt: "这篇文章的主旨是理清楚从我们调用一个hook，比如const [foo, setFoo] = useState('bar')中，从调用useState到得到 foo, setFoo这之间发生了什么，以及这个useState是如何保证state的更新。"
+title: "React Sourcecode Reading - React hooks part 1"
+excerpt: "I wrote this article for firguring out what actually happenes while we call a hook. For example, what happenes after we call const [foo, setFoo] = useState('bar')."
 category: "react"
 coverImage: "/assets/react.svg.png"
 date: "2021-03-24T05:35:07.322Z"
@@ -15,19 +15,19 @@ author:
 
 #### React version: 17.0.2
 
-##### Part 0 - 导读
+##### Part 0 - Introduction
 
-这篇文章的主旨是理清楚从我们调用一个 hook，比如
+I wrote this article for figuring out what happens while we call a hook function, for example:
 
 ```javascript
 const [foo, setFoo] = useState("bar");
 ```
 
-中，从调用 useState 到得到 foo, setFoo 这之间发生了什么，以及这个 useState 是如何保证 state 的更新。
+What happenes between the call of `useState` and the returned value? And how React ensures the update of value `foo`?
 
-##### Part 1 - 如何定位到 hooks 源代码
+##### Part 1 - How to locate hooks?
 
-在 react contribution guide 的帮助下，很容易可以找到 react components 的代码位置，即 [react/index.js](https://github.com/facebook/react/blob/master/packages/react/index.js) ，在 index.js 中，可以看到如下 hooks 的 export：
+With the help of react contribution guide，we can locate react components at [react/index.js](https://github.com/facebook/react/blob/master/packages/react/index.js). In this index file, we should notice the following export:
 
 ```javascript
 export {
@@ -48,11 +48,11 @@ export {
 } from './src/React';
 ```
 
-从这里顺藤摸瓜，进入到./src/React.js 中，得知这些 hooks 的导入来源于 ./ReackHooks.js. 这样就可以找到最外层的 react hooks 的定义了
+After I took a look at `./src/React.js`, the imports of these hooks are from `./ReackHooks.js`. From there, we can figure out how react defines those hooks.
 
 ##### Part2 - ReactHooks.js
 
-在粗浅地阅读这部分代码后，不难发现这里定义了各类 hooks 的 input，以 useState 举例：
+In `ReactHooks.js`, we can find the following definition:
 
 ```javascript
 //react/packages/react/src/ReactHooks.js: line 74
@@ -64,9 +64,9 @@ export function useState<S>(
 }
 ```
 
-可以看到， useState 支持一个 input，即这个 state 的初值，这里定义为 initialState，然后调用了 dispatcher 中的 useState。同时别的 hooks 也遵循类似的模式，即 ReactHooks.js 其实是一个对于 dispatcher 的 wrapper，核心功能都在 dispatcher 中实现。
+As you may notice, `useState` supports an input, which is the initial value of the state. After that, it calls `resolveDispatcher` function. From that, it returns the result of `useState` from `dispatcher`.
 
-这里有必要看一下 resolverDispatcher 的定义:
+Other than `useState`, all other hooks follow this pattern, i.e. react calls `resolveDispatcher` and returns hooks accordingly. Now let's look at how `resolveDispatcher` defined.
 
 ```javascript
 import ReactCurrentDispatcher from "./ReactCurrentDispatcher";
@@ -94,13 +94,14 @@ function resolveDispatcher() {
 }
 ```
 
-\_\_DEV\_\_ 是 react 为了方便开发者调试而设置的 flag，通过这里的信息可以大致了解到所有外部 hook 调用只能在 functional components 中运行，dispacther 则通过 ReactCurrentDispatcher 得到。通过继续阅读 ReactCurrentDispatcher 的源代码可知，所有 dispatcher 的定义来源于[**react/packages/react-reconciler**](https://github.com/facebook/react/tree/master/packages/react-reconciler)。
+\_\_DEV\_\_ is a flag for developers to debug. After reading the text in `console.error`, we know that all hooks are only available in functional components, where we get `dispatcher` form `ReactCurrentDispatcher.current`. This looks similar to the object returned by `useRef`, which returns an object contains a `current` field as well. All the `dispatcher` definitions come from [**react/packages/react-reconciler**](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
-##### Part 3 - [react-reconciler 和 react fiber](https://github.com/facebook/react/tree/master/packages/react-reconciler)
 
-通过 readme 可知 react reconciler 表面上是 react 提供的一个让你能够自定义 render 函数的包，实际上 react-reconciler 涉及到核心的 dom 更新算法，由于 render 的复杂程度这个包并没有被推荐在实际应用中作为公开的 api 使用，如果对于 react-reconciler 感兴趣可以参考[**这篇博文**](https://agent-hunt.medium.com/hello-world-custom-react-renderer-9a95b7cd04bc) 。目前我们更关心的是 hooks 是如何被定义并且运行的。
+##### Part 3 - [react-reconciler and react fiber](https://github.com/facebook/react/tree/master/packages/react-reconciler)
 
-通过 ReactHooks.js 的 import 可以看到，disptacher 类在'react-reconciler/src/ReactInternalTypes'中被定义,在 ReactInternalTypes 中可以看到这样一段 export:
+From the `readme` we know that `react-reconciler` is actually a package for you to customize the `render` function. It also oversees the core algorithm of how React updates DOM. This package was not published in public as an api due to the complexity of render function. I found [**this article**](https://agent-hunt.medium.com/hello-world-custom-react-renderer-9a95b7cd04bc) did a good job on digging into the algorighm behind. Here we care more about how hooks are defined.
+
+From `ReactHooks.js`, `dispatcher` are defined in `ReactInternalTypes` as below:
 
 ```javascript
 // Unwind Circular: moved from ReactFiberHooks.old
@@ -122,9 +123,7 @@ export type HookType =
   | "useCacheRefresh";
 ```
 
-在阅读剩余的 ReactInternalTypes.js 后不难发现这其实是一个对于 dispatcher type 的定义文件，中间也为 dispatcher 定义了种种接口，其中就包括了各种 hooks。
-
-在 ReactInternalTypes 中还有另一块定义如下:
+There's also a type `Fiber` defined as below:
 
 ```javascript
 // A Fiber is work on a Component that needs to be done or was done. There can
@@ -134,29 +133,29 @@ export type Fiber = {|
 }
 ```
 
-这里定义了一个 Fiber type。Fiber 是一个用于优化 react incremental rendering 的概念，举个例子，在传统的 stack frame 中一个 stack 将持续工作直到它的所有 function call 都被运行完，然而有时候我们对于一些 function（或是说一些组件需要处理的工作）需求更高的优先级，例如 input，animation 更新等等。fiber 则为这些工作提供了更高的灵活性，这些工作都被定义为 fiber，在 stack frame 调用这些 fiber 的时候，他们可以 cache 当前 work 的进度，在执行完一个更高优先级的 work 后再返回来执行之前的任务，从而极大地优化了 react 的体验。
+Fiber is a concept to optimize react incremental rendering. For example, in a traditional call stack architecture of a component implementation, the call stack will keep working until the call stack is empty. However, sometimes we need more priority on some functions, like input, animation. Fiber provides more flexibility to arrange these jobs. In the fiber implementation, all jobs are defined individually as fiber, where React can cache the progress of the work of a fiber. Therefore, React can work on those with higher priority first, and come back later to work on jobs with lower priority. 
 
-目前，我们只需要知道 fiber 是一个个独立的，需要被组件(component)执行（或是执行过的）的 work，拥有自己的 state 以及优先级就好了。
+In short, like described in comments, fibers are simply independent works that will be done or have been (partially) done by components, and they holds their state and priority individually.
 
 ##### Part 4 - [ReactFiberHooks](https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiberHooks.new.js)
 
-这个 3112 行的 js 文件定义了各类 hook，包括他们的执行方式，条件等等。在这 3000 多行中，可以发现对于 hooks 的定义遵循以下模式：
+This 3000+ lines of js file implements all type of hooks. Including the way of execution, the environment they will be executed, and etc. There are in total of 4 types of dispathers as below.
 
-- hooks 为 dispather 的一个 field
-- Dispatcher 分为如下几种：
+- First, hooks is a field of a dispatcher.
+- Dispatchers are classified as below：
   - ContextOnlyDispather (line: 2066)
   - HooksDispatcherOnMount (line: 2091)
   - HooksDispatcherOnUpdate (line: 2116)
   - HooksDispatcherOnRerender(line: 2141)
 
-即对于任意一个 dispatcher，以 useState 为例，都有一个 useState field,然而各个 useState 指向分别的适用于当前 dispatcher 的 useState 定义，接下来将对这些 dispatcher 分别展开说明。
+In summary, for any dispatcher, e.g. `ContextOnlyDispatcher`, it has a `useState` field. When we call `useState` in our component, it returns the `current` of resolved dispatcher, and after that, it calls the `useState` in the returned dispatcher, which is one of the four above.
 
 - **ContextOnlyDispatcher**
-  - ContextOnlyDispatcher 仅有两次调用，分别为初始化(renderWithHooks(line:348))，以及当出现 error 的时候(resetHooksAfterThrow(line:545))，这里都将 ReactCurrentDispatcher.current 设置为 ContextOnlyDispatcher, 这时候，所有的 hook 调用都将抛出异常(throwInvalidHookError(line:289))
-  - 我们可以理解为这个 dispatcher 是用来设置初值的，类似于我们在使用一个变量前先将它定义为 null。
+  - `ContextOnlyDispatcher` are used 2 times, one for initialization [**renderWithHooks**](https://github.com/facebook/react/blob/7c6049695f384a8c0daa685649df32078e5926b8/packages/react-reconciler/src/ReactFiberHooks.new.js#L359), and one for [**resetHooksAfterThrow**](https://github.com/facebook/react/blob/7c6049695f384a8c0daa685649df32078e5926b8/packages/react-reconciler/src/ReactFiberHooks.new.js#L562) once an error occured. Both functions set `ReactCurrentDispatcher.current` to `ContextOnlyDispatcher`.
+  - We can treat this dispatcher as a initializer, for example, we sometimes create a function to set/reset values to their initial values.
 
-- **HooksDispatcherOnRerender**
-  - 这里我们直接看下代码
+- **renderWithHooks**
+  - The rest 3 hooks are only called in the `renderWithHooks` as below.
   - ```Javascript
     export function renderWithHooks<Props, SecondArg>(
       current: Fiber | null,
@@ -216,12 +215,12 @@ export type Fiber = {|
     }
 
     ```
+  - First, the code determines the current state of `current`, in order to firgure out if the component is in initializing state. If it's ture, it calls `HooksDispatcherOnMount`, otherwise it calls `HooksDispatcherOnUpdate`. The `current` is a `Fiber` type. Based on the concept of `Fiber`, we can treat it as works that need to be done when a component start to initialize.
 
-  - 如上便是这三个 Dispatcher 的核心调用，首先这里对于 current 做了一个判定，这里的作用是在判定当前调用是否处在 init 的状态，如果是则使用 OnMount，如果 current 非 null 并且 memoizedState 为非 Null，则使用 OnUpdate。这里 Current 是一个 fiber，可以理解为在当前 component 开始初始化的时候，react 产生的各类 work。
-  - 在设置完 `ReactCurrentDispatcher` 后， 紧接着调用了 `Component(...)`。`renderWithHooks` 这个 function 在很多地方被使用到，最顶层的调用即组件的生命周期，以及类似于 `forwardRef` 等等。这里，`component` 通常被传递为 `render` 函数，所以我们可以得知这就是一个层层递归调用渲染函数的一个思路。
-  - 后面再一次调用将 `ReactCurrentDispatcher.current` 设置为 `ContextOnlyDispatcher`，即设成初值。
-  - `didScheduleRenderPhaseUpdateDuringThisPass` 这个变量在 ReactFiberHooks 这个 js 被调用的时候设置成 false，通过一些对 fiber 的判定后决定是否为 true。简单地说，这里决定了 hooks 的调用是否处在 Rerender 的阶段。
+  - After setting `ReactCurrentDispatcher`, it calls `Component(...)`. Before going into `Component` call, we must know that `renderWithHooks` is used in many place, the top-level call is the lifecycle of a component, and some important functions like `forwardRef`. Also, we know components call `render` at the end, and the `render` calls the initialize of children components. In short, `renderWithHooks` is called recursively.
 
-##### Part 5 - 一句话总结
+  - The later checks the render phase update, if there are no such needs, it calls `ContextOnlyDispatcher`.
 
-当在一个 component 中引用一个 hook function 的时候，我们调用的并不是这个 hook 本身，而是 react 根据当前 dispatcher 的状态进行判定过后，调用相对应的 hook 之后的返回值。
+##### Part 5 - One Sentence Summary
+
+When a component use a hook function, the hook function is the result of calling dispatcher resolver which returns the correct hook calls based on the react component state.
