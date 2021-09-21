@@ -1,9 +1,9 @@
 ---
-title: "React Sourcecode Reading - React hooks part 1"
+title: "React Code Reading - hooks 1"
 excerpt: "I wrote this article for firguring out what actually happenes while we call a hook. For example, what happenes after we call const [foo, setFoo] = useState('bar')."
 category: "react"
 coverImage: "/assets/react.svg.png"
-date: "2021-03-24T05:35:07.322Z"
+date: "2021-09-21"
 author:
   name: Zihao
   picture: "/assets/blog/authors/tim.jpeg"
