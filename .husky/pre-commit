@@ -3,3 +3,4 @@
 npx eslint --fix ./components/**/*.js
 npx eslint --fix ./pages/**/*.js
 npx eslint --fix ./pages/*.js
+npx eslint --fix ./lib/*.js
