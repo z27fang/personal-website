@@ -79,10 +79,17 @@ export default function Blog ({ allPosts }) {
             <Header menuLinks={menuLinks} selectedTab="/blog/"/>
             <div className="mb-24 mt-28">
                 <TagArea tags={tags} defaultSelectedTags={selectedTags} onChange={setSelectedTags}/>
-                <div className="flex md:flex-row flex-col">
-                { selectedPosts }
+                <div className="max-w-7xl justify-between m-auto px-10">
+                
+                  { 
+                   selectedPosts.length === 0 ? 
+                   <div className="flex items-center justify-center h-full">
+                    <p className="text-white text-2xl">Have you selected any tags?</p> 
+                   </div> :
+                   <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-1">{selectedPosts}</div>
+                  }
+                  
                 </div>
-
             </div>
         </div>
   )

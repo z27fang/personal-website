@@ -17,8 +17,8 @@ function Tag (props) {
   }
 
   return (
-        <div className={`border-white border-2 mx-1 px-1 border-radius-1 rounded-lg text-white cursor-pointer
-         ${tagContext.checked ? ' bg-blue-500 bg-opacity-50' : ''}`}
+        <div className={`mx-1 px-1 text-white cursor-pointer
+         ${tagContext.checked ? ' bg-blue-300 bg-opacity-80' : ''}`}
          onClick={handleOnClick}>
             {tagContext.name}
         </div>
