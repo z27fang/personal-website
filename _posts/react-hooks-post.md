@@ -7,6 +7,7 @@ date: "2021-09-21"
 author:
   name: Zihao
   picture: "/assets/blog/authors/tim.jpeg"
+tags: "js,js-react,js-react-hooks"
 # ogImage:
 #   url: "/assets/blog/hello-world/cover.jpg"
 ---

@@ -7,6 +7,7 @@ date: "2021-06-17"
 author:
   name: Zihao
   picture: "/assets/blog/authors/tim.jpeg"
+tags: "js,js-babel,js-webpack"
 # ogImage:
 #   url: "/assets/blog/hello-world/cover.jpg"
 ---

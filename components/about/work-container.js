@@ -5,7 +5,7 @@ export default function WorkContainer ({ jobInfo }) {
   const { companyName, jobTitle, jobTime, jobDescription } = jobInfo
 
   return (
-    <div className="md:w-9/12 w-11/12 bg-white bg-opacity-20 rounded-md flex flex-row my-4 h-40 p-1.5 shadow-md transform transition hover:scale-110 duration-200">
+    <div className="md:w-9/12 w-11/12 bg-white bg-opacity-20 flex flex-row my-4 h-40 p-1.5 shadow-md transform transition hover:scale-110 duration-200">
       <div className="h-full md:w-48 flex justify-center w-0">
         <img className="h-full" alt="react-icon" src="/assets/react.svg.png" />
       </div>

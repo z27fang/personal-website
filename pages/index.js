@@ -28,7 +28,7 @@ function Home () {
                       <div className="h-20 border-r-2 border-white"/>
                       <div className="ml-4">Zihao Fang</div>
                     </div>
-                    <div className="mt-12 bg-gray-600 bg-opacity-40 flex flex-col text-left rounded-md p-4 border-2 border-white">
+                    <div className="mt-12 bg-gray-600 bg-opacity-40 flex flex-col text-left p-4">
                         <Description className="text-2xl">Welcome to my website!</Description>
                         <Description>🙍‍♂️  I am a developer with data background.</Description>
                         <Description>🎓  I earned a bachlor&#39;s degree with Statistics major and Computer Science Minor at University of Waterloo.</Description>
