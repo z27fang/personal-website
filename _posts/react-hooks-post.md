@@ -24,7 +24,7 @@ I wrote this article for figuring out what happens while we call a hook function
 const [foo, setFoo] = useState("bar");
 ```
 
-What happenes between the call of `useState` and the returned value? And how React ensures the update of value `foo`?
+What happens between the call of `useState` and the returned value? And how React ensures the update of value `foo`?
 
 ##### Part 1 - How to locate hooks?
 
