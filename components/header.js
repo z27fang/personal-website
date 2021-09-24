@@ -3,8 +3,6 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 function MenuLink ({ selectedTab, href, children }) {
-  console.log(selectedTab);
-  console.log(href)
   const className = selectedTab === (href + '/') || selectedTab === href
     ? 'py-2 text-white md:py-0 md:text-2xl text-lg border-white border-b-4'
     : 'py-2 text-white md:py-0 md:text-2xl text-lg border-opacity-0 border-white border-b-4 hover:border-opacity-100 transition ease-linear duration-300'

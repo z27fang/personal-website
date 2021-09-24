@@ -17,8 +17,8 @@ function Tag (props) {
   }
 
   return (
-        <div className={`mx-1 px-1 text-white cursor-pointer
-         ${tagContext.checked ? ' bg-blue-300 bg-opacity-80' : ''}`}
+        <div className={`inline mx-1 p-2 text-white cursor-pointer max-w-max select-none
+         ${tagContext.checked ? ' bg-green-300 bg-opacity-50' : 'hover:bg-green-100 hover:bg-opacity-10'}`}
          onClick={handleOnClick}>
             {tagContext.name}
         </div>
@@ -169,7 +169,7 @@ export default function TagArea (props) {
 
   return (
         <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
-            <div className="flex md:flex-row flex-col">
+            <div>
                 {
                     flattenedTags.map(tag => {
                       return <Tag key={tag.name}
