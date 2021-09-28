@@ -27,7 +27,6 @@ function Tag (props) {
 
 const checkUpwards = (node, tagsArr) => {
   if (node.parent !== -1) {
-    // tagsArr[node.parent].checked = true;
     const nodeSiblings = tagsArr[node.parent].children
     let allSibChecked = true
     nodeSiblings.forEach(sib => { allSibChecked = allSibChecked && tagsArr[sib].checked })
@@ -169,7 +168,7 @@ export default function TagArea (props) {
 
   return (
         <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
-            <div>
+            <div style={{lineHeight: 3}}>
                 {
                     flattenedTags.map(tag => {
                       return <Tag key={tag.name}
