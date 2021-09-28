@@ -168,7 +168,7 @@ export default function TagArea (props) {
 
   return (
         <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
-            <div style={{lineHeight: 3}}>
+            <div style={{ lineHeight: 3 }}>
                 {
                     flattenedTags.map(tag => {
                       return <Tag key={tag.name}
