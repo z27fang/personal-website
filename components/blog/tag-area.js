@@ -17,11 +17,14 @@ function Tag (props) {
   }
 
   return (
-        <div className={`inline mx-1 p-2 text-white cursor-pointer max-w-max select-none
+    <div className='p-1'>
+        <div className={`text-white cursor-pointer select-none p-1
          ${tagContext.checked ? ' bg-green-300 bg-opacity-50' : 'hover:bg-green-100 hover:bg-opacity-10'}`}
+         style={{ whiteSpace: 'nowrap' }}
          onClick={handleOnClick}>
             {tagContext.name}
         </div>
+    </div>
   )
 }
 
@@ -122,10 +125,28 @@ export default function TagArea (props) {
 
   const initialFlattenedTags = useMemo(
     () => {
-      const tagsArr = []
-      buildArrayFromMap(tags[0], -1, tagsArr)
-      tagsArr.forEach(tag => { tag.checked = defaultSelectedTags.includes(tag.name) })
-      performCheck(0, tagsArr)
+      let tagsArr = [];
+      tags.forEach(tag => {
+        let base = tagsArr.length;
+        let tagsToBeAppended = [];
+        buildArrayFromMap(tag, -1, tagsToBeAppended);
+        console.log(tagsToBeAppended);
+        tagsToBeAppended.forEach(t => {
+          if(t.parent !== -1) t.parent += base;
+          t.self += base;
+          t.children = t.children.map(i => i + base);
+        })
+        tagsArr = tagsArr.concat(tagsToBeAppended);
+      })
+      
+      let checkedTagsIdx = [];
+      tagsArr.forEach((tag, i) => { 
+        tag.checked = defaultSelectedTags.includes(tag.name);
+        if(tag.checked) checkedTagsIdx.push(i);
+      });
+      checkedTagsIdx.forEach(i => {
+        performCheck(i, tagsArr);
+      });
       return tagsArr
     },
     [tags])
@@ -167,17 +188,15 @@ export default function TagArea (props) {
   }
 
   return (
-        <div className="max-w-7xl mx-auto h-30 bg-transparent -mt-10 px-16 py-4">
-            <div style={{ lineHeight: 3 }}>
-                {
-                    flattenedTags.map(tag => {
-                      return <Tag key={tag.name}
-                        tagContext={tag}
-                        selectNode={selectNode}
-                        deselectNode={deselectNode}/>
-                    })
-                }
-            </div>
+        <div className="max-w-7xl mx-auto bg-transparent -mt-10 px-16 py-4 flex flex-wrap">
+              {
+                  flattenedTags.map(tag => {
+                    return <Tag key={tag.name}
+                      tagContext={tag}
+                      selectNode={selectNode}
+                      deselectNode={deselectNode}/>
+                  })
+              }
         </div>
 
   )

@@ -48,7 +48,7 @@ export default function Blog ({ allPosts }) {
     { href: '/blog', name: 'Blog' },
     { href: '/about', name: 'About' }
   ]
-  const [selectedTags, setSelectedTags] = useState(['js'])
+  const [selectedTags, setSelectedTags] = useState(['js', 'python'])
 
   const tags = useMemo(() => generateTags(allPosts),
     [allPosts])

@@ -8,8 +8,6 @@ author:
   name: Zihao
   picture: "/assets/blog/authors/tim.jpeg"
 tags: "js,js-babel,js-webpack"
-# ogImage:
-#   url: "/assets/blog/hello-world/cover.jpg"
 ---
 
 ## Webpack and Babel (1) - introduction
