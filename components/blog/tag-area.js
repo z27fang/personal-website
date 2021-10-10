@@ -130,7 +130,6 @@ export default function TagArea (props) {
         const base = tagsArr.length
         const tagsToBeAppended = []
         buildArrayFromMap(tag, -1, tagsToBeAppended)
-        console.log(tagsToBeAppended)
         tagsToBeAppended.forEach(t => {
           if (t.parent !== -1) t.parent += base
           t.self += base
