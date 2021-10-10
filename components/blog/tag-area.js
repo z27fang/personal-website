@@ -125,28 +125,28 @@ export default function TagArea (props) {
 
   const initialFlattenedTags = useMemo(
     () => {
-      let tagsArr = [];
+      let tagsArr = []
       tags.forEach(tag => {
-        let base = tagsArr.length;
-        let tagsToBeAppended = [];
-        buildArrayFromMap(tag, -1, tagsToBeAppended);
-        console.log(tagsToBeAppended);
+        const base = tagsArr.length
+        const tagsToBeAppended = []
+        buildArrayFromMap(tag, -1, tagsToBeAppended)
+        console.log(tagsToBeAppended)
         tagsToBeAppended.forEach(t => {
-          if(t.parent !== -1) t.parent += base;
-          t.self += base;
-          t.children = t.children.map(i => i + base);
+          if (t.parent !== -1) t.parent += base
+          t.self += base
+          t.children = t.children.map(i => i + base)
         })
-        tagsArr = tagsArr.concat(tagsToBeAppended);
+        tagsArr = tagsArr.concat(tagsToBeAppended)
       })
-      
-      let checkedTagsIdx = [];
-      tagsArr.forEach((tag, i) => { 
-        tag.checked = defaultSelectedTags.includes(tag.name);
-        if(tag.checked) checkedTagsIdx.push(i);
-      });
+
+      const checkedTagsIdx = []
+      tagsArr.forEach((tag, i) => {
+        tag.checked = defaultSelectedTags.includes(tag.name)
+        if (tag.checked) checkedTagsIdx.push(i)
+      })
       checkedTagsIdx.forEach(i => {
-        performCheck(i, tagsArr);
-      });
+        performCheck(i, tagsArr)
+      })
       return tagsArr
     },
     [tags])
