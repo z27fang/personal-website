@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styles from './blog-entry.module.css'
 
+import IconWidget from '../icon-widget/icon-widget'
+
 export default function BlogEntry ({ blog }) {
   const {
     title,
@@ -35,7 +37,9 @@ export default function BlogEntry ({ blog }) {
                         {
                             showExcerpt
                               ? <p className={`h-full ${showExcerpt ? styles['fade-in'] : styles['fade-out']} p-2 text-sm font-mono`}>{excerpt}</p>
-                              : <img className={`h-full ${showExcerpt ? styles['fade-out'] : styles['fade-in']}`} src={coverImage}/>
+                              : <div className={`max-h-full flex items-center ${showExcerpt ? styles['fade-out'] : styles['fade-in']}`}>
+                                  <IconWidget icons={coverImage.split(',')}/>
+                                </div>
                         }
                     </div>
                     <div className="bg-black bg-opacity-40 p-2 h-16">

@@ -2,7 +2,7 @@
 title: "Babel and Webpack"
 excerpt: "This article is an introduction to Babel and Webpack, and some code reading on their behavior."
 category: "JS Dev"
-coverImage: "/assets/react.svg.png"
+coverImage: "/assets/babel.png,/assets/webpack.png"
 date: "2021-06-17"
 author:
   name: Zihao

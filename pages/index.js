@@ -26,15 +26,16 @@ function Home () {
                         <img src="/assets/avatar.jpg" alt="avatar" className="w-24 h-24 rounded-full border-2 mx-4"/>
                       </a>
                       <div className="h-20 border-r-2 border-white"/>
-                      <div className="ml-4">Zihao Fang</div>
+                      <div className="ml-4">Zihao Fang 方子豪</div>
                     </div>
                     <div className="mt-12 bg-gray-600 bg-opacity-40 flex flex-col text-left p-4">
-                        <Description className="text-2xl">Welcome to my website!</Description>
+                        <Description className="text-2xl">Welcome to my homepage!</Description>
                         <Description>🙍‍♂️  I am a developer with data background.</Description>
-                        <Description>🎓  I earned a bachlor&#39;s degree with Statistics major and Computer Science Minor at University of Waterloo.</Description>
-                        <Description>📚  I am learning Vite, React, ESBuild...(and many other stuff).</Description>
+                        <Description>🎓  I earned a bachlor&#39;s degree with Statistics major and Computer Science Minor at <b>University of Waterloo</b>.</Description>
+                        <Description>🎓  Incoming graduate student at <b>Georgia Tech</b> under OMSA program!</Description>
+                        <Description>📚  I am learning <i>Vite, React, ESBuild...(and many other stuff).</i></Description>
                         <Description>📸  Oh, I also like taking photos, I took this background at Victoria.</Description>
-                        <Description>👀  Learn more what I am capable of at
+                        <Description>👀  Learn more about my experience at
                             <Link href="/about"><a className="border-b-2 border-white hover:text-blue-200 hover:border-blue-200"> About</a></Link>
                         </Description>
                     </div>
