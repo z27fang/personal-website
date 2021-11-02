@@ -47,7 +47,7 @@ export default function About () {
       jobDescription: ['Implemented a internet security scanner on SSL and X-509.',
         'Hooked Logstash with server using its own protocol.',
         'Implemented over 15 independent UI components in Vue.js.']
-    }    
+    }
   ]
 
   return (
