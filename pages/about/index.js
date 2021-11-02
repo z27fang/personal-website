@@ -10,17 +10,28 @@ export default function About () {
   ]
 
   const jobs = [
-    {
-      companyName: 'Evertz Microsystems',
-      jobTitle: 'Data Developer',
-      jobTime: 'Jan, 2018 ~ Aug, 2018',
-      jobDescription: ['Implemented a internet security scanner on SSL and X-509.',
-        'Hooked Logstash with server using its own protocol.',
-        'Implemented over 15 independent UI components in Vue.js.']
-    },
 
     {
+      companyName: 'The Globe and Mail',
+      companyLogo: '/assets/tgam.png',
+      jobTitle: 'Data Engineer',
+      jobTime: 'Jan, 2021 ~ Dec, 2021',
+      jobDescription: ['Enahnced data pipeline in airflow and databrick.',
+        'Integrate and develop data-models within snowflake.',
+        'Conducted EDA on an auto-clustering machine learning model on user behavior.']
+    },
+    {
+      companyName: 'The Globe and Mail',
+      companyLogo: '/assets/tgam.png',
+      jobTitle: 'Full-stack Developer',
+      jobTime: 'May, 2020 ~ Aug, 2020',
+      jobDescription: ['Implemented a JWT authtication system for an internal application.',
+        'Implemented the UI for user center function for the application above.',
+        'Implemented a Look-a-like model for the above application.']
+    },
+    {
       companyName: 'CIBC',
+      companyLogo: '/assets/cibc.png',
       jobTitle: 'Developer',
       jobTime: 'Jan, 2019 ~ Apr, 2019',
       jobDescription: ['Participated in re-factoring a react-native application.',
@@ -29,21 +40,14 @@ export default function About () {
     },
 
     {
-      companyName: 'The Globe and Mail',
-      jobTitle: 'Full-stack Developer',
-      jobTime: 'May, 2020 ~ Aug, 2020',
-      jobDescription: ['Implemented a JWT authtication system for an internal application.',
-        'Implemented the UI for user center function for the application above.',
-        'Implemented a Look-a-like model for the above application.']
-    },
-    {
-      companyName: 'The Globe and Mail',
-      jobTitle: 'Data Engineer',
-      jobTime: 'Sep, 2019 ~ Dec, 2019',
-      jobDescription: ['Enahnced data pipeline in airflow and databrick.',
-        'Integrated 2 data-models within snowflake.',
-        'Conducted EDA on an auto-clustering machine learning model on user behavior.']
-    }
+      companyName: 'Evertz Microsystems',
+      companyLogo: '/assets/evertz.jpg',
+      jobTitle: 'Data Developer',
+      jobTime: 'Jan, 2018 ~ Aug, 2018',
+      jobDescription: ['Implemented a internet security scanner on SSL and X-509.',
+        'Hooked Logstash with server using its own protocol.',
+        'Implemented over 15 independent UI components in Vue.js.']
+    }    
   ]
 
   return (

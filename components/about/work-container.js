@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function WorkContainer ({ jobInfo }) {
-  const { companyName, jobTitle, jobTime, jobDescription } = jobInfo
+  const { companyName, companyLogo, jobTitle, jobTime, jobDescription } = jobInfo
 
   return (
     <div className="md:w-9/12 w-11/12 bg-white bg-opacity-20 flex flex-row my-4 h-40 p-1.5 shadow-md transform transition hover:scale-110 duration-200">
-      <div className="h-full md:w-48 flex justify-center w-0">
-        <img className="h-full" alt="react-icon" src="/assets/react.svg.png" />
+      <div className="h-full md:w-48 flex justify-center w-0 p-8">
+        <img className="h-full" alt="react-icon" src={companyLogo} />
       </div>
       <div className="md:w-48 flex justify-center items-center ml-4 w-1/3">
         <p className="font-bold font-serif">{companyName}</p>

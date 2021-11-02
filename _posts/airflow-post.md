@@ -2,7 +2,7 @@
 title: "Python threads, Snowflake and Airflow"
 excerpt: "This blog is about some of my practices in optimizing snowflake query performance by utilizing snowflake connector's get_results_from_sfqid and python's parallel programming feature."
 category: "Python Dev"
-coverImage: "/assets/python.svg.png"
+coverImage: "/assets/python.svg.png,/assets/airflow.png"
 date: "2021-10-10"
 author:
   name: Zihao
