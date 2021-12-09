@@ -10,6 +10,13 @@ export default function About () {
   ]
 
   const jobs = [
+    {
+      companyName: 'Faire',
+      companyLogo: '/assets/faire.png',
+      jobTitle: 'Front-end Developer',
+      jobTime: 'Jan, 2022 ~ ???',
+      jobDescription: ['My new journey starts here']
+    },
 
     {
       companyName: 'The Globe and Mail',
