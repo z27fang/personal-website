@@ -14,8 +14,8 @@ export default function About () {
       companyName: 'Faire',
       companyLogo: '/assets/faire.png',
       jobTitle: 'Front-end Engineer',
-      jobTime: 'Jan, 2022 ~ ???',
-      jobDescription: ['My new journey starts here']
+      jobTime: 'Jan, 2022 ~ -',
+      jobDescription: ['My new journey starts here.']
     },
 
     {
