@@ -1,4 +1,4 @@
-# A personal website side project
+# My homepage
 - todos:
   - [ ] TypeScript re-factor
   - [ ] git actions CI for UI tests
