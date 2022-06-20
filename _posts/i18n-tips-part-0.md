@@ -11,7 +11,7 @@ tags: "js,js-international"
 ---
 
 
-## I18N Tips - part0
+## I18N Tips - part 0
 
 This June has marked the half journey of year 2022, as well as my half-year career life as a junior front-end developer. As a FE developer, my job directly relates to customers' experience on our platform. Here I would like to share two useful small tips to help you build an i18n mindset to drive your success.
 
