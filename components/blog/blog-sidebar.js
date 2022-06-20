@@ -29,16 +29,11 @@ BlogItemBase.propTypes = {
 }
 
 export default function BlogSidebar ({ allPosts }) {
-  const [showFull, setShowFull] = useState(true)
-
-  const sidebarOnClick = () => {
-    setShowFull(!showFull)
-  }
+  const [showFull] = useState(true)
 
   return (
   <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100
-    ${showFull ? 'translate-x-0' : '-translate-x-32'} `}
-    onClick={sidebarOnClick}>
+    ${showFull ? 'translate-x-0' : '-translate-x-32'} `}>
       <div className={`flex flex-col max-h-full ${showFull ? 'items-start' : 'items-end'}`}>
         <div>
           {
