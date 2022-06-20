@@ -1,31 +1,36 @@
 .markdown {
-	@apply text-lg leading-relaxed;
+  @apply text-lg leading-relaxed;
 }
 
-.markdown p,
+.markdown p {
+  @apply font-sans my-2;
+}
+,
 .markdown ul,
 .markdown ol,
-.markdown li,
+.markdown li {
+  @apply list-disc italic my-4;
+}
 .markdown blockquote {
-	@apply text-base my-6;
+  @apply text-base my-6;
 }
 
 .markdown h2 {
-	@apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl mt-12 mb-4 leading-snug;
 }
 
 .markdown h3 {
-	@apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8 mb-4 leading-snug;
 }
 
 .markdown pre {
-	@apply text-sm bg-gray-200 overflow-x-scroll
+  @apply text-sm bg-gray-900 rounded-lg p-6 text-gray-400 my-6;
 }
 
 .markdown code {
-	@apply text-sm bg-gray-200 overflow-x-scroll
+  @apply text-sm text-gray-400 leading-6 overflow-auto whitespace-pre-wrap bg-gray-900 p-2 rounded-md;
 }
 
 .markdown a {
-	@apply border-b-2 border-gray-500
+  @apply border-b-2 border-gray-500;
 }

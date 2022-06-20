@@ -19,9 +19,9 @@ export default function PostPage ({ blog, morePosts, preview }) {
                 <BlogProgress/>
                 <BlogSidebar/>
                 <main>
-                    <div className="flex flex-row">
-                        <div className="w-2/12"></div>
-                        <div className="container mx-auto px-5 w-8/12">
+                    <div className="flex flex-row bg-gray-400">
+                        <div className="w-3/12"></div>
+                        <div className="mx-auto w-6/12">
                             {
                                 router.isFallback
                                   ? (
@@ -33,7 +33,7 @@ export default function PostPage ({ blog, morePosts, preview }) {
 
                             }
                         </div>
-                        <div className="w-2/12"></div>
+                        <div className="w-3/12"></div>
                     </div>
                 </main>
             </div>

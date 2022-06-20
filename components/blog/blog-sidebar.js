@@ -29,25 +29,16 @@ BlogItemBase.propTypes = {
 }
 
 export default function BlogSidebar ({ allPosts }) {
-  const [showFull, setShowFull] = useState(false)
-
-  const onMouseEnter = () => {
-    setShowFull(true)
-  }
+  const [showFull, setShowFull] = useState(true)
 
   const sidebarOnClick = () => {
     setShowFull(!showFull)
   }
 
-  const onMouseLeave = () => {
-    setShowFull(false)
-  }
 
   return (
-  <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100 overflow-y-scroll
+  <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100
     ${showFull ? 'translate-x-0' : '-translate-x-32'} `}
-    onMouseEnter={onMouseEnter}
-    onMouseLeave={onMouseLeave}
     onClick={sidebarOnClick}>
       <div className={`flex flex-col max-h-full ${showFull ? 'items-start' : 'items-end'}`}>
         <div>

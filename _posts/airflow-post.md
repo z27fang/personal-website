@@ -66,10 +66,10 @@ import concurrent.futures
 import copy
 import os
 
-"""
+'''
     - purpose:
         load queries from snowflake and write result to local as csv
-"""
+'''
 
 '''
 The actual class that runs queries
