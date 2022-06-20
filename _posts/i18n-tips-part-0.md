@@ -1,8 +1,8 @@
 ---
-title: "i18n Oriented Programming - part0"
-excerpt: "I would like to share some thoughts I have during my first half year as a front-end engineer."
+title: "I18N Tips - part0"
+excerpt: "Sharing some thoughts I have during my first half year as a front-end engineer."
 category: "JS Dev"
-coverImage: "/assets/babel.png,/assets/webpack.png"
+coverImage: "/assets/chrome.png"
 date: "2022-06-17"
 author:
   name: Zihao
@@ -11,7 +11,7 @@ tags: "js,js-international"
 ---
 
 
-## i18n Oriented Programming - part 0
+## I18N Tips - part0
 
 This June has marked the half journey of year 2022, as well as my half-year career life as a junior front-end developer. As a FE developer, my job directly relates to customers' experience on our platform. Here I would like to share two useful small tips to help you build an i18n mindset to drive your success.
 

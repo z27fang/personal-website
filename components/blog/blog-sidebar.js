@@ -35,7 +35,6 @@ export default function BlogSidebar ({ allPosts }) {
     setShowFull(!showFull)
   }
 
-
   return (
   <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100
     ${showFull ? 'translate-x-0' : '-translate-x-32'} `}
