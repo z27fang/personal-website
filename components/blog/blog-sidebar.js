@@ -16,10 +16,10 @@ BlogItemSmall.propTypes = {
 
 function BlogItemBase ({ children, className }) {
   return (
-  <div className={`bg-gray-500 w-44 h-12 border-b-2 border-black ${className}`}>
-    <div className="p-4 transform transition hover:scale-110 cursor-pointer duration-100">
+  <div className={`w-40 h-10 my-1 p-1 pl-5 text-gray-500 border-black hover:bg-gray-400 ${className}
+   cursor-pointer flex items-center align-center
+   rounded-md`}>
       {children}
-    </div>
   </div>
   )
 }
@@ -32,40 +32,20 @@ export default function BlogSidebar ({ allPosts }) {
   const [showFull] = useState(true)
 
   return (
-  <div className={`fixed w-44 h-full bg-gray-700 top-2 transform duration-100
+  <div className={`fixed w-44 h-full bg-gray-700 transform duration-100
     ${showFull ? 'translate-x-0' : '-translate-x-32'} `}>
-      <div className={`flex flex-col max-h-full ${showFull ? 'items-start' : 'items-end'}`}>
+      <div className="flex flex-col max-h-full py-4 px-2 items-start">
         <div>
           {
-            showFull
-              ? <BlogItemBase><Link href="/"><p className="bold">Home</p></Link></BlogItemBase>
-              : <BlogItemSmall>
-                  <img src="/assets/home.png"
-                  className="w-full h-full p-4"
-                  alt="home" />
-                </BlogItemSmall>
+             <BlogItemBase><Link href="/"><p className="bold w-full">Home</p></Link></BlogItemBase>
           }
         </div>
         <div>
-          {
-            showFull
-              ? <BlogItemBase><Link href="/blog/"><p className="bold">Blogs</p></Link></BlogItemBase>
-              : <BlogItemSmall>
-                  <img src="/assets/blog.png"
-                  className="w-full h-full p-4"
-                  alt="blog"/>
-                </BlogItemSmall>
+          { <BlogItemBase><Link href="/blog/"><p className="bold w-full">Blogs</p></Link></BlogItemBase>
           }
         </div>
         <div>
-          {
-            showFull
-              ? <BlogItemBase><Link href="/about/"><p className="bold">About</p></Link></BlogItemBase>
-              : <BlogItemSmall>
-                  <img src="/assets/about.png"
-                    className="w-full h-full p-4"
-                    alt="about"/>
-                </BlogItemSmall>
+          { <BlogItemBase><Link href="/about/"><p className="bold w-full">About</p></Link></BlogItemBase>
           }
         </div>
       </div>

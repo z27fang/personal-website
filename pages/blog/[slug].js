@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { getAllBlogs, getBlogBySlug } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import Article from '../../components/blog/article'
-import BlogProgress from '../../components/blog/blog-progress'
 import BlogSidebar from '../../components/blog/blog-sidebar'
 
 export default function PostPage ({ blog, morePosts, preview }) {
@@ -16,7 +15,6 @@ export default function PostPage ({ blog, morePosts, preview }) {
   return (
         <>
             <div className="min-h-screen max-w-full">
-                <BlogProgress/>
                 <BlogSidebar/>
                 <main>
                     <div className="flex flex-row bg-gray-400">
