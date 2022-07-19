@@ -30,7 +30,6 @@ export default function Header ({ menuLinks, selectedTab }) {
         <header className="md:pt-8 pt-0 md:h-auto h-10 z-20 right-0 left-0 top-0 fixed transition-all ease-in-out box-border bg-gray-400
         bg-opacity-20 backdrop-filter backdrop-blur">
             <div className="max-w-7xl flex items-center mx-auto box-border justify-between">
-                {/* <div className="cursor-pointer box-border h-5 text-white text-lg z-10 p-0 top-0">Home</div> */}
                 <MenuLink href="/" selectedTab={null}>Home</MenuLink>
                 <div className="hidden md:flex">
                     <div className="opacity-80 z-10 shadow-none flex flex-row p-0 static items-center inset-x-0 top-0 box-border ">
@@ -66,11 +65,14 @@ export default function Header ({ menuLinks, selectedTab }) {
             <div className="flex md:hidden">
                 <div
                 className={
-                    'fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-80 bg-gray-700 transition duration-500 linear delay-0 transform ' +
+                    'fixed top-0 flex flex-col pt-16 h-auto w-full text-left bg-opacity-80 transition duration-500 linear delay-0 transform ' +
                     (showMenu
                       ? 'translate-y-0 shadow-2xl opacity-1'
                       : '-translate-y-full opacity-0')
                 }
+                style={{
+                  backgroundColor: 'rgb(44, 95, 125)'
+                }}
                 >
                 {menuLinks.map((menulink, id) => (
                     <MenuLink key={id} href={menulink.href} selectedTab={selectedTab}>
