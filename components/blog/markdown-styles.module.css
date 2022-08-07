@@ -24,7 +24,7 @@
 }
 
 .markdown pre {
-  @apply text-sm bg-gray-900 rounded-lg p-6 text-gray-400 my-6;
+  @apply text-sm bg-gray-900 rounded-lg p-6 text-gray-400 my-6 overflow-auto;
 }
 
 .markdown code {

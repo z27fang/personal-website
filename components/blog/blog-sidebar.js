@@ -28,13 +28,19 @@ BlogItemBase.propTypes = {
   className: PropTypes.string
 }
 
-export default function BlogSidebar ({ allPosts }) {
-  const [showFull] = useState(true)
+export default function BlogSidebar () {
+  const [showFull, setShowFull] = useState(false)
+
+  React.useEffect(() => {
+    setShowFull(!navigator.userAgent.toLocaleLowerCase().match(/mobile/i))
+  }, [])
 
   return (
-  <div className={`fixed w-44 h-full bg-gray-700 transform duration-100
-    ${showFull ? 'translate-x-0' : '-translate-x-32'} `}>
-      <div className="flex flex-col max-h-full py-4 px-2 items-start">
+    <div>
+        {
+          showFull
+            ? <div className={'fixed w-44 h-full bg-gray-700 transform duration-100'}>
+        <div className="flex flex-col max-h-full py-4 px-2 items-start">
         <div>
           {
              <BlogItemBase><Link href="/"><p className="bold w-full">Home</p></Link></BlogItemBase>
@@ -50,6 +56,11 @@ export default function BlogSidebar ({ allPosts }) {
         </div>
       </div>
     </div>
+            : null
+        }
+
+    </div>
+
   )
 }
 BlogSidebar.propTypes = {
