@@ -12,12 +12,14 @@ export default function PostPage ({ blog, morePosts, preview }) {
             <div> ERROR </div>
     )
   }
+
   return (
-        <>
-            <div className="min-h-screen max-w-full">
+            <div className="min-h-screen">
+              {
+
+              }
                 <BlogSidebar/>
-                <main>
-                    <div className="flex flex-row bg-gray-400">
+                    <div className="flex flex-row bg-gray-400 w-screen">
                         <div className="w-3/12"></div>
                         <div className="mx-auto w-6/12">
                             {
@@ -33,9 +35,7 @@ export default function PostPage ({ blog, morePosts, preview }) {
                         </div>
                         <div className="w-3/12"></div>
                     </div>
-                </main>
             </div>
-        </>
   )
 }
 
